@@ -1,53 +1,47 @@
 class Player {
-  float cx, cy, cz, pS, fov =1000, speed = 10;
-  PImage[] spl = new PImage[3];
-  PImage[] spe = new PImage[3];
-  PImage[] spf = new PImage[3];
-  Player(float cx, float cy, float cz, float pS) {
-    this.cx = cx;
-    this.cy = cy;
-    this.cz = cz;
-    this.pS = pS;
-  }
+  float x =0, y =0, z =0, pS =100/*Player size*/, fov =1000, speed = 50;
+  int spriteCount = 0;
+  PImage[] spl = new PImage[3];//Sprite Player Lateral
+  PImage[] spb = new PImage[3];//Sprite Player Back
+  PImage[] spf = new PImage[3];//Sprite Player Front
   void init() {
     for (int i = 0; i<3; i++) {
       spl[i] = loadImage("Sprites/SPL"+(i+1)+".png");
-      spe[i] = loadImage("Sprites/SPE"+(i+1)+".png");
+      spb[i] = loadImage("Sprites/SPE"+(i+1)+".png");
       spf[i] = loadImage("Sprites/SPF"+(i+1)+".png");
     }
   }
   void paint() {
-
+    spriteCount++;
+    if (spriteCount == 3)spriteCount=0;
     pushMatrix();
-    translate(cx, cy, cz);
-    fill(255, 0, 0);
-    rotateX(PI/4);
+    translate(x, y, z);
+    rotateX(HALF_PI/2);
     //box(45);
     imageMode(CENTER);
-    if (key == 'd') {
-      if (keyPressed)image(spl[i], 0, 0, pS, pS);
+    if (key == 'd' || key == 'D') {
+      if (keyPressed)image(spl[spriteCount], 0, 0, pS, pS);
       else image(spl[0], 0, 0, pS, pS);
-    } else if (key == 'a') {
+    } else if (key == 'a' || key == 'A') {
       scale(-1, 1);
-      if (keyPressed)image(spl[i], 0, 0, pS, pS);
+      if (keyPressed)image(spl[spriteCount], 0, 0, pS, pS);
       else image(spl[0], 0, 0, pS, pS);
-    } else if (key == 'w') {
-      if (keyPressed)image(spe[i], 0, 0, pS, pS);
-      else image(spe[0], 0, 0, pS, pS);
-    } else if (key == 's') {
-      if (keyPressed)image(spf[i], 0, 0, pS, pS);
+    } else if (key == 'w' || key == 'W') {
+      if (keyPressed)image(spb[spriteCount], 0, 0, pS, pS);
+      else image(spb[0], 0, 0, pS, pS);
+    } else if (key == 's' || key == 'S') {
+      if (keyPressed)image(spf[spriteCount], 0, 0, pS, pS);
       else image(spf[0], 0, 0, pS, pS);
     } else image(spf[0], 0, 0, pS, pS);
 
     popMatrix();
-    camera(cx, cy-fov, cz+fov, cx, cy, cz, 0, 1, 0);
-    if (cy<height/2)cy = height/2;
+    camera(x, y-fov, z+fov, x, y, z, 0, 1, 0);
   }
   void move() {
     if (keyPressed) {
-      cx += key == 'd'? speed: key == 'a'? -speed:0;
-      cz += key == 's'? speed: key == 'w'? -speed:0;
-      fov += keyCode == DOWN? speed: keyCode == UP? -speed:0;
+      x += key == 'd'&& x<(t1.mapSize/2-1)*t1.mapSquareSize? speed: key == 'a'&& x>-t1.mapSize/2*t1.mapSquareSize? -speed:0;
+      z += key == 's'&& z<(t1.mapSize/2-1)*t1.mapSquareSize? speed: key == 'w'&& z>-t1.mapSize/2*t1.mapSquareSize? -speed:0;
+      fov += keyCode == DOWN && fov<2000? speed: keyCode == UP && fov>200? -speed:0;
     }
   }
 }

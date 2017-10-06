@@ -7,8 +7,8 @@ class Terrain {
   void init() {
     for (int i = 0; i<nTerrain; i++)s[i] = loadImage("Terrain/Suelo"+(i+1)+".jpg");
 
-    terrainX.add((int)(p1.cx-p1.cx%300));
-    terrainY.add((int)(p1.cz-p1.cz%300));
+    terrainX.add((int)(p1.x-p1.x%300));
+    terrainY.add((int)(p1.z-p1.z%300));
     float yoff = 0;
     for (int i = 0; i<mapSize; i++) {
       float xoff = 0;
@@ -36,9 +36,9 @@ class Terrain {
       }
     }
     //float nois =0;
-    /*if (terrainX.get(terrainX.size()-1) != (int)(cx-cx%300) || terrainY.get(terrainY.size()-1) != (int)(cz-cz%300)) {
-     terrainX.add((int)(cx-cx%300));
-     terrainY.add((int)(cz-cz%300));
+    /*if (terrainX.get(terrainX.size()-1) != (int)(x-x%300) || terrainY.get(terrainY.size()-1) != (int)(z-z%300)) {
+     terrainX.add((int)(x-x%300));
+     terrainY.add((int)(z-z%300));
      
      terrainN.add((int)(map(noise(nois), 0, 1, 0, 40)));
      
