@@ -34,7 +34,6 @@ class Player {
     } else image(spf[0], 0, 0, pS, pS);
 
     popMatrix();
-    camera(x, y-fov, z+fov, x, y, z, 0, 1, 0);
   }
   void move() {
     if (keyPressed) {
