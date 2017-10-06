@@ -21,7 +21,7 @@ class Terrain {
   }
   void paint() {
     pushMatrix();
-    translate(width/2-mapSquareSize*mapSize/2, height/2+p1.pS/2, -mapSquareSize*mapSize/2);
+    translate(-mapSquareSize*mapSize/2,p1.pS/2, -mapSquareSize*mapSize/2);
     rotateX(PI/2);
     imageMode(CENTER);
     //rect(0,0,10000,10000);
