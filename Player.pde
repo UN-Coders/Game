@@ -16,8 +16,7 @@ class Player {
     if (spriteCount == 3)spriteCount=0;
     pushMatrix();
     translate(x, y, z);
-    rotateX(HALF_PI/2);
-    //box(45);
+    rotateX(PI/4);
     imageMode(CENTER);
     if (key == 'd' || key == 'D') {
       if (keyPressed)image(spl[spriteCount], 0, 0, pS, pS);

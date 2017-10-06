@@ -21,10 +21,9 @@ class Terrain {
   }
   void paint() {
     pushMatrix();
-    translate(-mapSquareSize*mapSize/2,p1.pS/2, -mapSquareSize*mapSize/2);
+    translate(-mapSquareSize*mapSize/2, p1.pS/2, -mapSquareSize*mapSize/2);
     rotateX(PI/2);
     imageMode(CENTER);
-    //rect(0,0,10000,10000);
 
     for (int i = 0; i<mapSize; i++) {
       for (int j = 0; j<mapSize; j++) {
@@ -35,25 +34,6 @@ class Terrain {
         }
       }
     }
-    //float nois =0;
-    /*if (terrainX.get(terrainX.size()-1) != (int)(x-x%300) || terrainY.get(terrainY.size()-1) != (int)(z-z%300)) {
-     terrainX.add((int)(x-x%300));
-     terrainY.add((int)(z-z%300));
-     
-     terrainN.add((int)(map(noise(nois), 0, 1, 0, 40)));
-     
-     nois += 0.2;
-     }
-     println(terrainN.get(terrainN.size()-1));
-     for (int i = 0; i<terrainN.size(); i++) {
-     if (terrainN.get(i) >= 0 && terrainN.get(i)<10)image(s3, terrainX.get(i)-600, terrainY.get(i), 300, 300);
-     if (terrainN.get(i) >= 10 && terrainN.get(i)<15)image(s5, terrainX.get(i)-600, terrainY.get(i), 300, 300);
-     if (terrainN.get(i) >= 15 && terrainN.get(i)<26)image(s4, terrainX.get(i)-600, terrainY.get(i), 300, 300);
-     if (terrainN.get(i) >= 26 && terrainN.get(i)<30)image(s, terrainX.get(i)-600, terrainY.get(i), 300, 300);
-     if (terrainN.get(i) >= 30 && terrainN.get(i)<40)image(s2, terrainX.get(i)-600, terrainY.get(i), 300, 300);
-     }*/
     popMatrix();
-  }
-  Terrain() {
   }
 }
