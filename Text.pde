@@ -2,7 +2,11 @@ class Text {
   void paint() {
     pushMatrix();
     textSize(50);
-    text("x: "+p1.x,width/2,height/2);
+    textAlign(LEFT, TOP);
+    text("x: "+p1.x,0,0);
+    text("z: "+p1.z,0,50);
+    text("fov: "+cam1.fov,0,100);
+    text("fps: "+frameRate,0,150);
     popMatrix();
   }
 }

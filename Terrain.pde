@@ -1,5 +1,5 @@
 class Terrain {
-  int nTerrain = 8, mapSize = 70, mapSquareSize = 100;
+  int nTerrain = 8, mapSize = 100, mapSquareSize = 100;
   float noiseHeight, amplitude;
   PImage[] s = new PImage[nTerrain];
   ArrayList<Integer> terrainX = new ArrayList<Integer>();
@@ -17,7 +17,7 @@ class Terrain {
         for (int k = 0; k<2; k++) {
           float perlinValue = noise(timeX, timeY)*2-1;
           noiseHeight += perlinValue * amplitude;
-          amplitude *= 0.1;
+          amplitude /= 10;
         }
         timeY += 0.2;
         hMap.put("X"+i+"Y"+j, map(noiseHeight, -1, 1, 0, 1));

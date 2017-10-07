@@ -1,4 +1,4 @@
-int q = 0;
+int SpriteSpeed = 0;
 
 Player p1;
 Terrain t1;
@@ -20,17 +20,16 @@ void setup() {
 }
 
 void draw() {
-  println(frameRate);
   if (frameCount%7 == 0) {
-    q++;
-    if (q == 3)q=0;
+    SpriteSpeed++;
+    if (SpriteSpeed == 3)SpriteSpeed=0;
     background(0);
-    pushMatrix(); // Separa el terreno, camara, y jugador, del debug Screen ("Text")
+    pushMatrix(); // Print terrain, player and camera apart of the debug Screen ("text")
     cam1.paint();
     t1.paint();
     p1.paint();
     popMatrix();
-    //text.paint();
+    text.paint();
   }
   p1.move();
 }
