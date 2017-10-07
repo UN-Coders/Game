@@ -1,5 +1,5 @@
 class Player {
-  float x =0, y =0, z =0, pS =100/*Player size*/, fov =1000, speed = 50;
+  float x =0, y =0, z =0, pS =100/*Player size*/, speed = 50;
   int spriteCount = 0;
   PImage[] spl = new PImage[3];//Sprite Player Lateral
   PImage[] spb = new PImage[3];//Sprite Player Back
@@ -34,13 +34,12 @@ class Player {
     } else image(spf[0], 0, 0, pS, pS);
 
     popMatrix();
-    camera(x, y-fov, z+fov, x, y, z, 0, 1, 0);
   }
   void move() {
     if (keyPressed) {
       x += key == 'd'&& x<(t1.mapSize/2-1)*t1.mapSquareSize? speed: key == 'a'&& x>-t1.mapSize/2*t1.mapSquareSize? -speed:0;
       z += key == 's'&& z<(t1.mapSize/2-1)*t1.mapSquareSize? speed: key == 'w'&& z>-t1.mapSize/2*t1.mapSquareSize? -speed:0;
-      fov += keyCode == DOWN && fov<2000? speed: keyCode == UP && fov>200? -speed:0;
+      cam1.fov += keyCode == DOWN && cam1.fov<2000? speed: keyCode == UP && cam1.fov>500? -speed:0;
     }
   }
 }

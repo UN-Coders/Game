@@ -1,22 +1,33 @@
 class Terrain {
-  int nTerrain = 8, mapSize = 70, mapSquareSize = 100;
+  int nTerrain = 8, mapSize = 100, mapSquareSize = 100, worldEdge;
+  float noiseHeight, amplitude;
   PImage[] s = new PImage[nTerrain];
   ArrayList<Integer> terrainX = new ArrayList<Integer>();
   ArrayList<Integer> terrainY = new ArrayList<Integer>();
-  HashMap<String, Integer> hMap = new HashMap<String, Integer>();
+  HashMap<String, Float> hMap = new HashMap<String, Float>();
   void init() {
     for (int i = 0; i<nTerrain; i++)s[i] = loadImage("Terrain/Suelo"+(i+1)+".jpg");
 
-    terrainX.add((int)(p1.x-p1.x%300));
-    terrainY.add((int)(p1.z-p1.z%300));
-    float yoff = 0;
+    float timeX = 0;
     for (int i = 0; i<mapSize; i++) {
-      float xoff = 0;
+      float timeY = 0;
       for (int j = 0; j<mapSize; j++) {
-        hMap.put("X"+i+"Y"+j, (int)map(noise(xoff, yoff), 0, 1, 0, nTerrain*10));
-        xoff += 0.2;
+        amplitude = 1;
+        noiseHeight = 0;
+        for (int k = 0; k<2; k++) {
+          float perlinValue = noise(timeX, timeY)*2-1;
+          noiseHeight += perlinValue * amplitude;
+          amplitude /= 10;
+        }
+        timeY += 0.1;
+        hMap.put("X"+i+"Y"+j, map(noiseHeight, -1, 1, 0, 1));
+        worldEdge = (int)map(noise(timeY*2),0,1,4,10);
+        if (i<worldEdge || j<worldEdge || i > mapSize-worldEdge || j > mapSize-worldEdge) {
+          
+          hMap.put("X"+i+"Y"+j, 0.5);
+        }
       }
-      yoff += 0.2;
+      timeX += 0.1;
     }
   }
   void paint() {
@@ -27,11 +38,14 @@ class Terrain {
 
     for (int i = 0; i<mapSize; i++) {
       for (int j = 0; j<mapSize; j++) {
-        int r = 0;
-        for (int k = 0; k < nTerrain; k++) {
-          if (hMap.get("X"+i+"Y"+j) >= r && hMap.get("X"+i+"Y"+j)<r+10)image(s[k], i*mapSquareSize, j*mapSquareSize, mapSquareSize, mapSquareSize);
-          r+=10;
-        }
+        if (map(hMap.get("X"+i+"Y"+j), 0, 1, 0, 80)<5)image(s[7], i*mapSquareSize, j*mapSquareSize, mapSquareSize, mapSquareSize);
+        else if (map(hMap.get("X"+i+"Y"+j), 0, 1, 0, 80)<10)image(s[6], i*mapSquareSize, j*mapSquareSize, mapSquareSize, mapSquareSize);
+        else if (map(hMap.get("X"+i+"Y"+j), 0, 1, 0, 80)<15)image(s[5], i*mapSquareSize, j*mapSquareSize, mapSquareSize, mapSquareSize);
+        else if (map(hMap.get("X"+i+"Y"+j), 0, 1, 0, 80)<40)image(s[4], i*mapSquareSize, j*mapSquareSize, mapSquareSize, mapSquareSize);
+        else if (map(hMap.get("X"+i+"Y"+j), 0, 1, 0, 80)<65)image(s[3], i*mapSquareSize, j*mapSquareSize, mapSquareSize, mapSquareSize);
+        else if (map(hMap.get("X"+i+"Y"+j), 0, 1, 0, 80)<70)image(s[2], i*mapSquareSize, j*mapSquareSize, mapSquareSize, mapSquareSize);
+        else if (map(hMap.get("X"+i+"Y"+j), 0, 1, 0, 80)<75)image(s[1], i*mapSquareSize, j*mapSquareSize, mapSquareSize, mapSquareSize);
+        else if (map(hMap.get("X"+i+"Y"+j), 0, 1, 0, 80)<80)image(s[0], i*mapSquareSize, j*mapSquareSize, mapSquareSize, mapSquareSize);
       }
     }
     popMatrix();
