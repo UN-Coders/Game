@@ -2,16 +2,14 @@ class Terrain {
   int nTerrain = 8, mapSize = 100, mapSquareSize = 100, worldEdge;
   float noiseHeight, amplitude;
   PImage[] s = new PImage[nTerrain];
-  ArrayList<Integer> terrainX = new ArrayList<Integer>();
-  ArrayList<Integer> terrainY = new ArrayList<Integer>();
-  HashMap<String, Float> hMap = new HashMap<String, Float>();
+  HashMap<String, Integer> hMap = new HashMap<String, Integer>();
   void init() {
     for (int i = 0; i<nTerrain; i++)s[i] = loadImage("Terrain/Suelo"+(i+1)+".jpg");
 
     float timeX = 0;
-    for (int i = 0; i<mapSize; i++) {
+    for (int i = 0; i<=mapSize; i++) {
       float timeY = 0;
-      for (int j = 0; j<mapSize; j++) {
+      for (int j = 0; j<=mapSize; j++) {
         amplitude = 1;
         noiseHeight = 0;
         for (int k = 0; k<2; k++) {
@@ -20,34 +18,35 @@ class Terrain {
           amplitude /= 10;
         }
         timeY += 0.1;
-        hMap.put("X"+i+"Y"+j, map(noiseHeight, -1, 1, 0, 1));
-        worldEdge = (int)map(noise(timeY*2),0,1,4,10);
+        hMap.put("X"+i+"Y"+j, (int)map(noiseHeight, -1, 1, 0, 80));
+        worldEdge = (int)map(noise(timeY*2), 0, 1, 5, 15);
         if (i<worldEdge || j<worldEdge || i > mapSize-worldEdge || j > mapSize-worldEdge) {
-          
-          hMap.put("X"+i+"Y"+j, 0.5);
+          hMap.put("X"+i+"Y"+j, 50);
         }
       }
       timeX += 0.1;
     }
   }
   void paint() {
-    pushMatrix();
-    translate(-mapSquareSize*mapSize/2, p1.pS/2, -mapSquareSize*mapSize/2);
-    rotateX(PI/2);
-    imageMode(CENTER);
-
-    for (int i = 0; i<mapSize; i++) {
-      for (int j = 0; j<mapSize; j++) {
-        if (map(hMap.get("X"+i+"Y"+j), 0, 1, 0, 80)<5)image(s[7], i*mapSquareSize, j*mapSquareSize, mapSquareSize, mapSquareSize);
-        else if (map(hMap.get("X"+i+"Y"+j), 0, 1, 0, 80)<10)image(s[6], i*mapSquareSize, j*mapSquareSize, mapSquareSize, mapSquareSize);
-        else if (map(hMap.get("X"+i+"Y"+j), 0, 1, 0, 80)<15)image(s[5], i*mapSquareSize, j*mapSquareSize, mapSquareSize, mapSquareSize);
-        else if (map(hMap.get("X"+i+"Y"+j), 0, 1, 0, 80)<40)image(s[4], i*mapSquareSize, j*mapSquareSize, mapSquareSize, mapSquareSize);
-        else if (map(hMap.get("X"+i+"Y"+j), 0, 1, 0, 80)<65)image(s[3], i*mapSquareSize, j*mapSquareSize, mapSquareSize, mapSquareSize);
-        else if (map(hMap.get("X"+i+"Y"+j), 0, 1, 0, 80)<70)image(s[2], i*mapSquareSize, j*mapSquareSize, mapSquareSize, mapSquareSize);
-        else if (map(hMap.get("X"+i+"Y"+j), 0, 1, 0, 80)<75)image(s[1], i*mapSquareSize, j*mapSquareSize, mapSquareSize, mapSquareSize);
-        else if (map(hMap.get("X"+i+"Y"+j), 0, 1, 0, 80)<80)image(s[0], i*mapSquareSize, j*mapSquareSize, mapSquareSize, mapSquareSize);
+    
+    
+    //translate(,);
+    for (int i = 0; i<=mapSize; i++) {
+      for (int j = 0; j<=mapSize; j++) {
+        pushMatrix();
+        rotateX(PI/2);
+        translate(i*mapSquareSize-mapSquareSize*mapSize/2,j*mapSquareSize-mapSquareSize*mapSize/2);
+        if (hMap.get("X"+i+"Y"+j)<5)image(s[7], 0, 0, mapSquareSize, mapSquareSize);
+        else if (hMap.get("X"+i+"Y"+j)<10)image(s[6], 0, 0, mapSquareSize, mapSquareSize);
+        else if (hMap.get("X"+i+"Y"+j)<15)image(s[5], 0, 0, mapSquareSize, mapSquareSize);
+        else if (hMap.get("X"+i+"Y"+j)<40)image(s[4], 0, 0, mapSquareSize, mapSquareSize);
+        else if (hMap.get("X"+i+"Y"+j)<65)image(s[3], 0, 0, mapSquareSize, mapSquareSize);
+        else if (hMap.get("X"+i+"Y"+j)<70)image(s[2], 0, 0, mapSquareSize, mapSquareSize);
+        else if (hMap.get("X"+i+"Y"+j)<75)image(s[1], 0, 0, mapSquareSize, mapSquareSize);
+        else if (hMap.get("X"+i+"Y"+j)<80)image(s[0], 0, 0, mapSquareSize, mapSquareSize);
+        popMatrix();
       }
     }
-    popMatrix();
+    
   }
 }
