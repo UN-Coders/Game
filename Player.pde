@@ -35,12 +35,20 @@ class Player {
     popMatrix();
   }
   void move() {
-    if (keyPressed) {
-      /*temx*/ x += key == 'd'&& x<mapT.mapSize/2? 1: key == 'a'&& x>-mapT.mapSize/2? -1:0;
-      /*temz*/ z += key == 's'&& z<mapT.mapSize/2? 1: key == 'w'&& z>-mapT.mapSize/2? -1:0;
-      mapC.fov += keyCode == DOWN && mapC.fov<2000? 10: keyCode == UP && mapC.fov>500? -10:0;
-      //if (!(mapT.hMap.get("X"+temx+"Y"+temz)==50))x = temx;
-      //if (!(mapT.hMap.get("X"+temx+"Y"+temz)==50))z = temz;
+    int tx = x, tz = z;
+    tx += x<mapT.mapSize/2 && x>-mapT.mapSize/2?east  - west:0;
+    tz += z<mapT.mapSize/2 && z>-mapT.mapSize/2?south - north:0;
+    mapC.fov += keyCode == DOWN && mapC.fov<2000? 10: keyCode == UP && mapC.fov>1000? -10:0;
+    println(mapT.hMap.get("X"+(tx+mapT.mapSize/2)+"Y"+(tz+mapT.mapSize/2)));
+    if (mapT.hMap.get("X"+(tx+mapT.mapSize/2)+"Y"+(tz+mapT.mapSize/2))<40) {
+      x = tx; 
+      z = tz;
     }
+  }
+  void setDirection(int k, int spd) {
+    if      (k == 'W')  north = spd;
+    else if (k == 'S')  south = spd;
+    else if (k == 'A')  west  = spd;
+    else if (k == 'D')  east  = spd;
   }
 }
