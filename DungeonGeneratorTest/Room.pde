@@ -1,6 +1,6 @@
 class Room {
   PVector pos = new PVector();
-  int nPath, xSize, ySize;
+  int nPath, xSize, ySize, nr;
 
   void paint() {
 

@@ -1,4 +1,4 @@
-int nr, s = 50, cols, rows;
+int s = 50, cols, rows;
 float near = 100;
 ArrayList<Room> room = new ArrayList<Room>();
 boolean[][] space;
