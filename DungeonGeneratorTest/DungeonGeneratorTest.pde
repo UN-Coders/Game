@@ -1,10 +1,10 @@
-int nr, s = 100, cols, rows;
+int nr, s = 50, cols, rows;
 float near = 100;
 ArrayList<Room> room = new ArrayList<Room>();
 boolean[][] space;
 void setup() {
-  fullScreen();
-  //size(1000, 1000);
+  //fullScreen();
+  size(1000, 600);
   cols = width/s;
   rows = height/s;
   space = new boolean[cols][rows];

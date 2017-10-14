@@ -36,13 +36,13 @@ class Room {
 
     pushMatrix();
     translate(s/2, s/2);
-    strokeWeight(20);
+    strokeWeight(s*0.2);
     line((int)pos.x*s, (int)pos.y*s, (int)room.get(nr).pos.x*s, (int)room.get(nr).pos.y*s);
     strokeWeight(0);
     fill(0, 255, 0, 200);
-    ellipse((int)pos.x*s, (int)pos.y*s, 60, 20);
+    ellipse((int)pos.x*s, (int)pos.y*s, s*0.6, s*0.2);
     fill(255, 0, 0, 200);
-    ellipse((int)room.get(nr).pos.x*s, (int)room.get(nr).pos.y*s, 20, 60);
+    ellipse((int)room.get(nr).pos.x*s, (int)room.get(nr).pos.y*s, s*0.2, s*0.6);
     popMatrix();
     near = 1000;
   }
@@ -55,13 +55,13 @@ class Room {
   Room(int posX, int posY) {
     this.pos.set(posX, posY);
     this.nPath = 1;
-    this.xSize = (int)random(20, s);
-    this.ySize = (int)random(20, s);
+    this.xSize = (int)random(s*0.2, s);
+    this.ySize = (int)random(s*0.2, s);
   }
   Room() {
     this.pos = new PVector((int)random(0, width/s), (int)random(0, height/s));
     this.nPath = 1;
-    this.xSize = (int)random(20, s);
-    this.ySize = (int)random(20, s);
+    this.xSize = (int)random(s*0.2, s);
+    this.ySize = (int)random(s*0.2, s);
   }
 }
