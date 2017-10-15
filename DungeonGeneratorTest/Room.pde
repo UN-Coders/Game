@@ -1,7 +1,23 @@
 class Room {
   PVector pos = new PVector();
-  int nPath, xSize, ySize, nr;
+  int nPath, xSize, ySize, nr, group = 0;
 
+  void detectRelation(int r) {
+
+    if ( room.get(room.get(room.get(r).nr).nr).equals(room.get(r)) && room.get(room.get(r).nr).group == 0) {
+      if (group == 0) {
+        room.get(room.get(r).nr).group = nGr; 
+        nGr++;
+      } else room.get(room.get(r).nr).group = group;
+    } else {
+      if (room.get(room.get(r).nr).group == 0) { 
+        room.get(room.get(r).nr).group = group = nGr; 
+        nGr++;
+      } else group = room.get(room.get(r).nr).group;
+    }
+  }
+  void confirmRelation() {
+  }
   void paint() {
 
     fill(160, 100, 50);
@@ -9,30 +25,12 @@ class Room {
     rect(pos.x*s, pos.y*s, xSize, ySize);
   }
   void nearest() {
-    for (int r2 = 0; r2<room.size(); r2++) { 
-      if ((pos.copy().sub(room.get(r2).pos)).mag()<near && (pos.copy().sub(room.get(r2).pos)).mag()!=0) { 
-        near = (pos.copy().sub(room.get(r2).pos)).mag();
-        nr = r2;
+    for (int r = 0; r<room.size(); r++) { 
+      if ((pos.copy().sub(room.get(r).pos)).mag()<near && (pos.copy().sub(room.get(r).pos)).mag()!=0) { 
+        near = (pos.copy().sub(room.get(r).pos)).mag();
+        nr = r;
       }
     }  
-
-    //pushMatrix(); 
-    //beginShape();
-    //translate(xSize/2, ySize/2);
-    //vertex((int)pos.x*s, (int)pos.y*s);
-    //strokeWeight(0);
-    //fill(0, 255, 0, 200);
-    //ellipse((int)pos.x*s, (int)pos.y*s, 20, 20);
-    //translate(-xSize/2, -ySize/2);
-    //translate(room.get(nr).xSize/2, room.get(nr).ySize/2);
-    //vertex((int)room.get(nr).pos.x*s, (int)room.get(nr).pos.y*s);
-    //strokeWeight(0);
-    //fill(0, 0, 255, 200);
-    //ellipse((int)room.get(nr).pos.x*s, (int)room.get(nr).pos.y*s, 20, 20);
-    //strokeWeight(5);
-    //endShape();
-    //popMatrix();
-
 
     pushMatrix();
     translate(s/2, s/2);
