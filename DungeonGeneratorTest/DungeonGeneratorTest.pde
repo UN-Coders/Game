@@ -1,11 +1,11 @@
-int s = 50, cols, rows,nGr = 1;
+int s = 40, cols, rows,nGr = 1,percentage = 40;
 float near = 100;
 ArrayList<Room> room = new ArrayList<Room>();
 boolean[][] space;
 boolean nearest = false, secondClick = false;
 void setup() {
   //fullScreen();
-  size(1000, 600);
+  size(700, 700);
   cols = width/s;
   rows = height/s;
   space = new boolean[cols][rows];
@@ -22,7 +22,7 @@ void setup() {
 void reset() {
   for (int x = 0; x<cols; x++) {
     for (int y = 0; y<rows; y++) {
-      if (chance(5)) {
+      if (chance(percentage)) {
         if (!space[x][y]==true) room.add(new Room(x, y));
         space[x][y]=true;
       }
@@ -52,7 +52,6 @@ void draw() {
   }
   for (int r = 0; r<room.size(); r++) { 
       room.get(r).detectRelation(r);
-      println(room.get(r).group, room.get(r).pos.x, room.get(r).pos.y);
     }
   if(secondClick )noLoop();
 }

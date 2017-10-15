@@ -4,19 +4,30 @@ class Room {
 
   void detectRelation(int r) {
 
-    if ( room.get(room.get(room.get(r).nr).nr).equals(room.get(r)) && room.get(room.get(r).nr).group == 0) {
-      if (group == 0) {
-        room.get(room.get(r).nr).group = nGr; 
-        nGr++;
-      } else room.get(room.get(r).nr).group = group;
+    if (room.get(room.get(room.get(r).nr).nr).equals(room.get(r))) {
+
+      if (room.get(room.get(r).nr).group == 0) {
+        if (group != 0)
+          room.get(room.get(r).nr).group = group;
+        else {
+          room.get(room.get(r).nr).group = group = nGr;
+          nGr++;
+        }
+      }
     } else {
-      if (room.get(room.get(r).nr).group == 0) { 
-        room.get(room.get(r).nr).group = group = nGr; 
-        nGr++;
-      } else group = room.get(room.get(r).nr).group;
+      if (room.get(room.get(r).nr).group != 0) {
+        if (group == 0) {
+          group = room.get(room.get(r).nr).group;
+        }
+      } else {
+        if (group != 0)
+          room.get(room.get(r).nr).group = group; 
+        else {
+          room.get(room.get(r).nr).detectRelation(room.get(r).nr);
+          room.get(r).detectRelation(r);
+        }
+      }
     }
-  }
-  void confirmRelation() {
   }
   void paint() {
 
