@@ -1,37 +1,36 @@
 class Player {
   int x =0, y =0, z =0, pS =100/*Player size*/, temx, temz;
   int spriteCount = 0;
-  PImage[] spl = new PImage[3];//Sprite Player Lateral
-  PImage[] spb = new PImage[3];//Sprite Player Back
-  PImage[] spf = new PImage[3];//Sprite Player Front
+  PImage sprite = new PImage();
+  ArrayList<PImage> sp = new ArrayList<PImage>();
   void init() {
-    for (int i = 0; i<3; i++) {
-      spl[i] = loadImage("Sprites/SPL"+(i+1)+".png");
-      spb[i] = loadImage("Sprites/SPE"+(i+1)+".png");
-      spf[i] = loadImage("Sprites/SPF"+(i+1)+".png");
+    sprite = loadImage("Sprite.png");
+    for (int j = 512; j<767; j+=64) {
+      for (int i = 0; i<575; i+=64) {
+        sp.add(sprite.get(i, j, 64, 64));
+      }
     }
   }
   void paint() {
     spriteCount++;
-    if (spriteCount == 3)spriteCount=0;
+    if (spriteCount == 8)spriteCount=0;
     pushMatrix();
     imageMode(CENTER);
     rotateX(PI/2);
     translate(x*pS, z*pS);
-    if (key == 'd' | key == 'D') {
-      if (keyPressed)image(spl[spriteCount], 0, 0, pS, pS);
-      else image(spl[0], 0, 0, pS, pS);
-    } else if (key == 'a' | key == 'A') {
-      scale(-1, 1);
-      if (keyPressed)image(spl[spriteCount], 0, 0, pS, pS);
-      else image(spl[0], 0, 0, pS, pS);
-    } else if (key == 'w' | key == 'W') {
-      if (keyPressed)image(spb[spriteCount], 0, 0, pS, pS);
-      else image(spb[0], 0, 0, pS, pS);
-    } else if (key == 's' | key == 'S') {
-      if (keyPressed)image(spf[spriteCount], 0, 0, pS, pS);
-      else image(spf[0], 0, 0, pS, pS);
-    } else image(spf[0], 0, 0, pS, pS);
+    if (south - north == -1) {
+      if (keyPressed)image(sp.get(0+spriteCount), 0, 0, pS, pS);
+      else image(sp.get(0), 0, 0, pS, pS);
+    } else if (east  - west == -1) {
+      if (keyPressed)image(sp.get(9+spriteCount), 0, 0, pS, pS);
+      else image(sp.get(9), 0, 0, pS, pS);
+    } else if (east  - west == 1) {
+      if (keyPressed)image(sp.get(27+spriteCount), 0, 0, pS, pS);
+      else image(sp.get(27), 0, 0, pS, pS);
+    } else if (south - north == 1) {
+      if (keyPressed)image(sp.get(18+spriteCount), 0, 0, pS, pS);
+      else image(sp.get(18), 0, 0, pS, pS);
+    } else image(sp.get(18), 0, 0, pS, pS);
     popMatrix();
   }
   void move() {

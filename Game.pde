@@ -25,7 +25,7 @@ void setup() {
 }
 
 void draw() {
-  if (frameCount%5 == 0) {
+  if (frameCount %3 == 0) {
     background(0);
     pushMatrix(); // Print terrain, player and camera apart of the debug Screen ("text")
     mapC.paint();
@@ -34,6 +34,8 @@ void draw() {
     popMatrix();
     text.paint();
   }
+  if (frameCount %5 == 0) {
+    mapP.move();
+  }
   mapC.move();
-  mapP.move();
 }
