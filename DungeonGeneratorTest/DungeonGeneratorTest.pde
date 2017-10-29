@@ -1,64 +1,28 @@
-int s = 40, cols, rows,nGr = 1,percentage = 40;
-float near = 100;
+int s, cols, rows, nRooms;
 ArrayList<Room> room = new ArrayList<Room>();
-boolean[][] space;
-boolean nearest = false, secondClick = false;
+ArrayList<Path> path = new ArrayList<Path>();
+
 void setup() {
-  //fullScreen();
-  size(700, 700);
+  size(1500, 1500);
+  s = 50;
+  nRooms = 50;
   cols = width/s;
   rows = height/s;
-  space = new boolean[cols][rows];
-
-
-
-  for (int i = 0; i<width/s; i++) {
-    for (int j = 0; j<height/s; j++) {
-      fill(255, 100);
-      //rect(i*s, j*s, s, s);
-    }
+  for (int r = 0; r < nRooms; r++) {
+    Room t = new Room();
+    for (Room rr : room)
+      if (rr == t)t = new Room();
+    room.add(t);
   }
-}
-void reset() {
-  for (int x = 0; x<cols; x++) {
-    for (int y = 0; y<rows; y++) {
-      if (chance(percentage)) {
-        if (!space[x][y]==true) room.add(new Room(x, y));
-        space[x][y]=true;
-      }
-    }
-  }
-}
+  room.get(0).detectRelation();
+} 
+int cont = 0;
 void draw() {
-  for (int i = 0; i<width/s; i++) {
-    for (int j = 0; j<height/s; j++) {
-      pushMatrix();
-      translate(i*s,j*s);
-      fill(255, 100);
-      strokeWeight(0);
-      
-      rect(0, 0, s, s);
-      fill(0);
-      textAlign(RIGHT);
-      text(i+" "+j,s,s);
-      popMatrix();
-    }
-  }
-  for (int r = 0; r<room.size(); r++) {
-    room.get(r).paint();
-  }
-  for (int r = 0; r<room.size() && !nearest; r++) {
-    room.get(r).nearest();
-  }
-  for (int r = 0; r<room.size(); r++) { 
-      room.get(r).detectRelation(r);
-    }
-  if(secondClick )noLoop();
-}
-boolean chance(float percentage) {
-  return random(0, 100)<percentage;
-}
-void mouseClicked() {
-  if (mouseButton == RIGHT && !secondClick){reset(); secondClick = true;}
-  if (mouseButton == LEFT)setup();
+  translate(s/2, s/2);
+  if(cont == 0)
+    for (Room r : room) 
+      r.paint();
+  if (cont < path.size()) 
+    path.get(cont++).paint();
+  delay(400);
 }
