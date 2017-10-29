@@ -1,5 +1,6 @@
-Player mapP = new Player();
+
 Terrain mapT = new Terrain();
+Player mapP = new Player();
 Camera mapC = new Camera();
 Terrain miniT = mapT;
 Text text = new Text();
@@ -34,7 +35,7 @@ void draw() {
     popMatrix();
     text.paint();
   }
-  if (frameCount %5 == 0) {
+  if (frameCount %4 == 0) {
     mapP.move();
   }
   mapC.move();

@@ -1,5 +1,5 @@
 class Player {
-  int x =0, y =0, z =0, pS =100/*Player size*/, temx, temz;
+  int x, y, z, pS =100/*Player size*/, temx, temz;
   int spriteCount = 0;
   PImage sprite = new PImage();
   ArrayList<PImage> sp = new ArrayList<PImage>();
@@ -10,8 +10,13 @@ class Player {
         sp.add(sprite.get(i, j, 64, 64));
       }
     }
+    if (mapT.hMap.get("X"+(x+mapT.mapSize/2)+"Y"+(z+mapT.mapSize/2))<65 && mapT.hMap.get("X"+(x+mapT.mapSize/2)+"Y"+(z+mapT.mapSize/2)) > 40) {
+      x = (int)random(-mapT.mapSize/2, mapT.mapSize/2);
+      z = (int)random(-mapT.mapSize/2, mapT.mapSize/2);
+    }
   }
   void paint() {
+    println(mapT.hMap.get("X"+(x+mapT.mapSize/2)+"Y"+(z+mapT.mapSize/2)));
     spriteCount++;
     if (spriteCount == 8)spriteCount=0;
     pushMatrix();
@@ -38,7 +43,6 @@ class Player {
     tx += x<mapT.mapSize/2 && x>-mapT.mapSize/2?east  - west:0;
     tz += z<mapT.mapSize/2 && z>-mapT.mapSize/2?south - north:0;
     mapC.fov += keyCode == DOWN && mapC.fov<2000? 10: keyCode == UP && mapC.fov>1000? -10:0;
-    println(mapT.hMap.get("X"+(tx+mapT.mapSize/2)+"Y"+(tz+mapT.mapSize/2)));
     if (mapT.hMap.get("X"+(tx+mapT.mapSize/2)+"Y"+(tz+mapT.mapSize/2))<40) {
       x = tx; 
       z = tz;
@@ -49,5 +53,10 @@ class Player {
     else if (k == 'S')  south = spd;
     else if (k == 'A')  west  = spd;
     else if (k == 'D')  east  = spd;
+  }
+  Player() {
+    x = (int)random(-mapT.mapSize/2, mapT.mapSize/2);
+    y = 0;
+    z = (int)random(-mapT.mapSize/2, mapT.mapSize/2);
   }
 }
