@@ -1,36 +1,53 @@
-# RPG-Game
+# RPG-Game _(Titulo por decidir)_
 
-# Sebastian Garnica Quiroz
-# David Esteban Avila
-
-| Sebastian Garnica | SGarnicaQ |
+|Nombre|GitHub User|
 |--------|-----------------|
+| Sebastian Garnica | SGarnicaQ |
 | David Esteban Avila | davilab |
+| Harrison Pinto| HASPIMA |
+| Diego Ruiz | daruiz31 |
+| Nicolas Arias| R-WolfGang |
 
-# Introducción
 
-## Problemática
+>## Introducción
 
-<Descripción del problema que se busca resolver>
+>>### Problemática
 
-## Marco teórico
+Desarrollo de un programa que use programacion orientada objetos
 
-<Sustento teórico del proyecto. Referencias: artículos, sitios web>
+>>### Marco teórico
 
-## Antecedentes
+A partir del uso de la funcion `noise()` de processing, se genera el terreno del mapa principal de manera aleatoria, en el cual el personaje puede moverse libremente y elegir a donde entrar, entre las 7 _dungeon_, la _tienda_, o la _dungeon del **boss final**_, esta ultima tiene un prerrequisito para poder acceder.
+
+Dentro de las _dungeons_ se encuentran una serie de pasadizos estilo Laberinto donde podran aparecer _mobs/enemigos_ contra los cuales se debe enfrentar el personaje y a su ves _loot/items_, al final de cada _dungeon_ se encontrara un **boss** el cual dara una de las 7 _llaves_.
+
+Al completar las 7 _dungeons_ y tener las 7 _llaves_ se podra entrar a la _dungeon del **boss final**_ para completar el juego.
+
+Las batallas estan orientadas al estilo _estrategia por turnos_, en la cual a partir de las habilidades, stats e items que el personaje tenga, podra hacer una eleccion y atacar para acabar con su oponente antes de que ocurra lo contrario.
+
+Los _sprites_ usados para los personajes se desarrollaron usando la pagina de [Universal LPC Spritesheet Character Generator](http://gaurav.munjal.us/Universal-LPC-Spritesheet-Character-Generator/).
+
+
+>>### Antecedentes
 
 <Aplicaciones similares, url's de los repos>
 
-# Objetivos
+>## Objetivos
 
-## General
+>>### General
 
-<Enmarque el proyecto en un objetivo global>
+>>>Desarrollar un juego tipo RPG con batallas de _estrategia por turnos_.
 
-## Específicos
+>>### Específicos
 
-<Desglose el objetivo general en específicos>
+>>>Usar generacion aleatoria en el mapa principal.
 
-# Requisitos
+>>>Permitir la seleccion del personaje.
 
-<Indique el lenguaje y los requerimientos esperados de la aplicación. Liste las [librerías de Processing](https://processing.org/reference/libraries/) que se emplearían para su desarrollo.>
+>>>Guardado del mundo.
+
+>>>Uso de una _AI_ decente para las batallas.
+
+>## Requisitos
+
+>>##### El lenguaje utilizado es Java a partir de Processing, no requiere el uso de ninguna libreria externa
