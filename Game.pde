@@ -10,6 +10,7 @@ int north, south, west, east;
 
 void keyPressed() {
   mapP.setDirection(keyCode, 1);
+  if(key == '1' || key == '2' || key == '3' || key == '4')mapP.init(key);
 }
 
 void keyReleased() {
@@ -17,12 +18,12 @@ void keyReleased() {
 }
 
 void setup() {
-  //size(1000, 1000, P3D);
+  size(1000, 1000, P3D);
   frameRate(60);
   noiseSeed((int)random(0, 1000));
-  fullScreen(P3D); //if active produce lag, have to fix
+  //fullScreen(P3D); //if active produce lag, have to fix
   mapT.init();
-  mapP.init();
+  mapP.init(49);
 }
 
 void draw() {

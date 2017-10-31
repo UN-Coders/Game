@@ -3,9 +3,10 @@ class Player {
   int spriteCount = 0;
   PImage sprite = new PImage();
   ArrayList<PImage> sp = new ArrayList<PImage>();
-  void init() {
-    sprite = loadImage("Sprite (3).png");
-    
+  void init(int k) {
+    println(k);
+    sprite = loadImage("Sprite "+(k-48)+".png");
+    sp.clear();
     for (int j = 512; j<767; j+=64) {
       for (int i = 0; i<575; i+=64) {
         sp.add(sprite.get(i, j, 64, 64));
