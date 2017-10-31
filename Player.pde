@@ -25,19 +25,11 @@ class Player {
     imageMode(CENTER);
     rotateX(PI/2);
     translate(x*pS, z*pS);
-    if (south - north == -1) {
-      if (keyPressed)image(sp.get(0+spriteCount), 0, 0, pS, pS);
-      else image(sp.get(0), 0, 0, pS, pS);
-    } else if (east  - west == -1) {
-      if (keyPressed)image(sp.get(9+spriteCount), 0, 0, pS, pS);
-      else image(sp.get(9), 0, 0, pS, pS);
-    } else if (east  - west == 1) {
-      if (keyPressed)image(sp.get(27+spriteCount), 0, 0, pS, pS);
-      else image(sp.get(27), 0, 0, pS, pS);
-    } else if (south - north == 1) {
-      if (keyPressed)image(sp.get(18+spriteCount), 0, 0, pS, pS);
-      else image(sp.get(18), 0, 0, pS, pS);
-    } else image(sp.get(18), 0, 0, pS, pS);
+    if      (south - north == -1) image(sp.get( 0+spriteCount), 0, 0, pS, pS);
+    else if (east  - west  == -1) image(sp.get( 9+spriteCount), 0, 0, pS, pS);
+    else if (east  - west  ==  1) image(sp.get(27+spriteCount), 0, 0, pS, pS);
+    else if (south - north ==  1) image(sp.get(18+spriteCount), 0, 0, pS, pS);
+    else image(sp.get(18), 0, 0, pS, pS);
     popMatrix();
   }
   void move() {
