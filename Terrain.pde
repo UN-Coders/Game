@@ -19,7 +19,7 @@ class Terrain {
         }
         timeY += 0.1;
         hMap.put("X"+i+"Y"+j, (int)map(noiseHeight, -1, 1, 0, 80));
-        worldEdge = (int)map(noise(timeY*2), 0, 1, 5, 15);
+        worldEdge = (int)map(noise(timeX,timeY*2), 0, 1, 5, 15);
         if (i<worldEdge || j<worldEdge || i > mapSize-worldEdge || j > mapSize-worldEdge) {
           hMap.put("X"+i+"Y"+j, 50);
         }
@@ -28,8 +28,6 @@ class Terrain {
     }
   }
   void paint() {
-    
-    
     //translate(,);
     for (int i = 0; i<=mapSize; i++) {
       for (int j = 0; j<=mapSize; j++) {
