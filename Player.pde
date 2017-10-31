@@ -4,15 +4,16 @@ class Player {
   PImage sprite = new PImage();
   ArrayList<PImage> sp = new ArrayList<PImage>();
   void init() {
-    sprite = loadImage("Sprite.png");
+    sprite = loadImage("Sprite (3).png");
+    
     for (int j = 512; j<767; j+=64) {
       for (int i = 0; i<575; i+=64) {
         sp.add(sprite.get(i, j, 64, 64));
       }
     }
-    if (mapT.hMap.get("X"+(x+mapT.mapSize/2)+"Y"+(z+mapT.mapSize/2))<65 && mapT.hMap.get("X"+(x+mapT.mapSize/2)+"Y"+(z+mapT.mapSize/2)) > 40) {
-      x = (int)random(-mapT.mapSize/2, mapT.mapSize/2);
-      z = (int)random(-mapT.mapSize/2, mapT.mapSize/2);
+    while (mapT.hMap.get("X"+(x+mapT.mapSize/2)+"Y"+(z+mapT.mapSize/2))<65 && mapT.hMap.get("X"+(x+mapT.mapSize/2)+"Y"+(z+mapT.mapSize/2)) >= 40) {
+      x = (int)random(15-mapT.mapSize/2, mapT.mapSize/2-15);
+      z = (int)random(15-mapT.mapSize/2, mapT.mapSize/2-15);
     }
   }
   void paint() {
