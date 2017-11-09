@@ -1,7 +1,7 @@
 # RPG-Game _(Titulo por decidir)_
 
 |Nombre|GitHub User|
-|--------|-----------------|
+|:---|:---:|
 | Sebastian Garnica | SGarnicaQ |
 | David Esteban Avila | davilab |
 | Harrison Pinto| HASPIMA |
@@ -9,45 +9,46 @@
 | Nicolas Arias| R-WolfGang |
 
 
->## Introducción
+## Introducción
 
->>### Problemática
+* ###Problemática
 
-Desarrollo de un programa que use programacion orientada objetos
+: Desarrollo de un programa que use programacion orientada objetos.
 
->>### Marco teórico
+* ###Marco teórico
 
-A partir del uso de la funcion `noise()` de processing, se genera el terreno del mapa principal de manera aleatoria, en el cual el personaje puede moverse libremente y elegir a donde entrar, entre las 7 _dungeon_, la _tienda_, o la _dungeon del **boss final**_, esta ultima tiene un prerrequisito para poder acceder.
+: A partir del uso de la funcion `noise()` de processing, se genera el terreno del mapa principal de manera aleatoria, en el cual el personaje puede moverse libremente y elegir a donde entrar, entre las 7 _dungeon_, la _tienda_, o la _dungeon del **boss final**_, esta ultima tiene un prerrequisito para poder acceder.
 
-Dentro de las _dungeons_ se encuentran una serie de pasadizos estilo Laberinto donde podran aparecer _mobs/enemigos_ contra los cuales se debe enfrentar el personaje y a su ves _loot/items_, al final de cada _dungeon_ se encontrara un **boss** el cual dara una de las 7 _llaves_.
+: Dentro de las _dungeons_ se encuentran una serie de pasadizos estilo Laberinto donde podran aparecer _mobs/enemigos_ contra los cuales se debe enfrentar el personaje y a su ves _loot/items_, al final de cada _dungeon_ se encontrara un **boss** el cual dara una de las 7 _llaves_.
 
-Al completar las 7 _dungeons_ y tener las 7 _llaves_ se podra entrar a la _dungeon del **boss final**_ para completar el juego.
+: Al completar las 7 _dungeons_ y tener las 7 _llaves_ se podra entrar a la _dungeon del **boss final**_ para completar el juego.
 
-Las batallas estan orientadas al estilo _estrategia por turnos_, en la cual a partir de las habilidades, stats e items que el personaje tenga, podra hacer una eleccion y atacar para acabar con su oponente antes de que ocurra lo contrario.
+: Las batallas estan orientadas al estilo _estrategia por turnos_, en la cual a partir de las habilidades, stats e items que el personaje tenga, podra hacer una eleccion y atacar para acabar con su oponente antes de que ocurra lo contrario.
 
-Los _sprites_ usados para los personajes se desarrollaron usando la pagina de [Universal LPC Spritesheet Character Generator](http://gaurav.munjal.us/Universal-LPC-Spritesheet-Character-Generator/).
+>Los _sprites_ usados para los personajes se desarrollaron usando la pagina de [Universal LPC Spritesheet Character Generator](http://gaurav.munjal.us/Universal-LPC-Spritesheet-Character-Generator/).
 
 
->>### Antecedentes
+* ### Antecedentes
 
-<Aplicaciones similares, url's de los repos>
+	* Repositorio de un juego RPG en Python.
+	: <https://github.com/pbfy0/RPG>.
 
->## Objetivos
+## Objetivos
 
->>### General
+* ### General
 
->>>Desarrollar un juego tipo RPG con batallas de _estrategia por turnos_.
+	* Desarrollar un juego RPG, usando el modo de batallas : _estrategia por turnos_.
 
->>### Específicos
+* ### Específicos
 
->>>Usar generacion aleatoria en el mapa principal.
+	1. Usar generacion aleatoria en el mapa principal.
 
->>>Permitir la seleccion del personaje.
+	2. Permitir la seleccion del _sprite_ personaje.
 
->>>Guardado del mundo.
+	3. Guardar estado del juego, para poder "cargar partida".
 
->>>Uso de una _AI_ decente para las batallas.
+	4. Usar una _AI_ :"Inteligencia Artificial" para las batallas.
 
->## Requisitos
+## Requisitos
 
->>##### El lenguaje utilizado es Java a partir de Processing, no requiere el uso de ninguna libreria externa
+> El lenguaje utilizado es Java a partir de Processing, no requiere el uso de ninguna libreria externa
