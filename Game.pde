@@ -1,43 +1,33 @@
-
-Terrain mapT = new Terrain();
-Player mapP = new Player();
-Camera mapC = new Camera();
-Terrain miniT = mapT;
-Text text = new Text();
-
-int px, py, ix, iy;
-int north, south, west, east;
-
-void keyPressed() {
-  mapP.setDirection(keyCode, 1);
-  if(key == '1' || key == '2' || key == '3' || key == '4')mapP.init(key);
-}
-
-void keyReleased() {
-  mapP.setDirection(keyCode, 0);
-}
-
+Terrain mapT;															/*Declaration of the Terrain object*/
+Player mapP;															/*Declaration of the Player object*/
+Camera mapC;															/*Declaration of the Map object*/
+Text text;																/*Declaration of the Text object*/
 void setup() {
-  //size(1000, 1000, P3D);
-  frameRate(60);
-  noiseSeed((int)random(0, 1000));
-  fullScreen(P3D); //if active produce lag, have to fix
-  mapT.init();
-  mapP.init(49);
-}
-
+	frameRate(60);														/*Set max fps*/
+	mapT = new Terrain();												/*Initialization of the Terrain object*/
+	mapP = new Player();												/*Initialization of the Player object*/
+	mapC = new Camera();												/*Initialization of the Map object*/
+	text = new Text();													/*Initialization of the Text object*/
+	fullScreen(P3D);													/* **Bug** if active produce lag, have to fix*/
+} 
 void draw() {
-  if (frameCount %3 == 0) {
-    background(0);
-    pushMatrix(); // Print terrain, player and camera apart of the debug Screen ("text")
-    mapC.paint();
-    mapT.paint();
-    mapP.paint();
-    popMatrix();
-    text.paint();
-  }
-  if (frameCount %4 == 0) {
-    mapP.move();
-  }
-  mapC.move();
+	background(0);														/*Set a black background*/
+	pushMatrix();														/*Paint terrain, player and camera*/
+	mapC.paint(); 
+	mapT.paint(); 
+	mapP.paint(); 
+	popMatrix(); 
+	text.paint();														/*Paint debug Screen*/
+	/*Camera and player Movement*/
+	mapP.move();
+	mapC.move();
+	delay(40);															/*Speed of repainting*/
+}
+/**/																	/*Player Movement Directions*/
+void keyPressed() {
+	mapP.setDirection(keyCode, 1); 
+	if (key == '1' || key == '2' || key == '3' || key == '4')mapP.init(key);
+}
+void keyReleased() {
+	mapP.setDirection(keyCode, 0);
 }
