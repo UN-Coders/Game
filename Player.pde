@@ -19,7 +19,8 @@ class Player {
 	}
 	void paint() {
 		spriteCount++;
-		if (spriteCount == 8)spriteCount=0;
+		if (spriteCount == 8)
+			spriteCount=0;
 		pushMatrix();
 		imageMode(CENTER);
 		rotateX(PI/2);
@@ -32,7 +33,7 @@ class Player {
 			image(sp.get(27+spriteCount), 0, 0, pS, pS);
 		else if (south - north ==  1) 
 			image(sp.get(18+spriteCount), 0, 0, pS, pS);
-		else 
+		else
 			image(sp.get(18), 0, 0, pS, pS);
 		popMatrix();
 	}
@@ -59,10 +60,10 @@ class Player {
 			east  = spd;
 	}
 	Player() {
-		this.x = (int)random(-mapT.mapSize/2, mapT.mapSize/2);
+		this.x = (int)random(15-mapT.mapSize/2, mapT.mapSize/2-15);;
 		this.y = 0;
-		this.z = (int)random(-mapT.mapSize/2, mapT.mapSize/2);
-		this.pS = 100;
+		this.z = (int)random(15-mapT.mapSize/2, mapT.mapSize/2-15);;
+		this.pS = mapT.mapSquareSize;
 		init((int)'1');													/*Player Initialization, arg = key*/
 	}
 }
