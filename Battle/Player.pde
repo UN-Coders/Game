@@ -29,6 +29,13 @@ class Player {
       }
     }
   }
+  void paintCharacter(){
+    pushMatrix();
+    rectMode(CORNER);
+    image(sp.get(27),width/10,height/7,width*1.3/4,height*1.5/3);
+    image(sp.get(17),width*6/10,height/7,width*1.3/4,height*1.5/3);
+    popMatrix();
+  }
   
   ///Do not uncomment until the final merge with the master branch
   

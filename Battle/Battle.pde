@@ -26,8 +26,9 @@ void battle(){
 	textAlign(CENTER);
 	button.paint("<NAME>",width*1.2/50, (height*2/3)+width/150, (width*4/15)-width/150, height*89/120);
 	textAlign(LEFT);
-	button.paint("<holllllllllll>",width*1.2/50, height*89/120+width/150, (width*4/15)-width/150, height*98/120);
-	button.paint("<holllllllllll>",width*1.2/50, height*98/120+width/150, (width*4/15)-width/150, height*107/120);
-	button.paint("<holllllllllll>",width*1.2/50, height*107/120+width/150, (width*4/15)-width/150, height*116/120);
+	button.paint("<LIFE>",width*1.2/50, height*89/120+width/150, (width*4/15)-width/150, height*98/120);
+	button.paint("<MANA>",width*1.2/50, height*98/120+width/150, (width*4/15)-width/150, height*107/120);
+	button.paint("<STAMINA>",width*1.2/50, height*107/120+width/150, (width*4/15)-width/150, height*116/120);
 	popMatrix();
+  player.paintCharacter();
 }
