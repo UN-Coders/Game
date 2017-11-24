@@ -2,6 +2,8 @@ class TerrainDungeon{
 	JSONObject map;
 	Dungeon n1;
 	int mapSize;
+	int pX, pY;															/*Save player position*/
+
 	void init(String s) {
 		n1 = new Dungeon(s);
 		//map = loadJSONObject("save/Dungeon/"+s+"/mini.json");			/*Use for load the save*/
@@ -23,6 +25,7 @@ class TerrainDungeon{
 	}
 	TerrainDungeon(String s){
 		mapSize = mapT.mapSize;											/*12*8 is the mapmapSize of the dungeon*/
+		pX = pY = -47;
 		init(s);
 	}
 }

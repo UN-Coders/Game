@@ -3,6 +3,7 @@ class Terrain {
 	PImage[] s = new PImage[8];											/*Array of the Terrain textures*/
 	PImage cMap;														/*Image of the complete map*/
 	JSONObject map = new JSONObject();									/*Map with key:value setting in .json*/
+	int pX, pY;															/*Save player position*/
 
 	void init() {														/*Initialization of the object*/
 		cMap = createImage(1000,1000,RGB);								/*map unique image*/

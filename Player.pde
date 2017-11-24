@@ -11,11 +11,12 @@ class Player {
 	for (int j = 512; j<767; j+=64)										/*Sprite movement section*/
 		for (int i = 0; i<575; i+=64)
 			sp.add(sprite.get(i, j, 64, 64));
-
-		while (mapT.map.getFloat((x+mapT.mapSize/2)+"-"+(z+mapT.mapSize/2))==1) {
-			x = (int)random(15-mapT.mapSize/2, mapT.mapSize/2-15);
-			z = (int)random(15-mapT.mapSize/2, mapT.mapSize/2-15);
-		}
+	while (mapT.map.getFloat((x+mapT.mapSize/2)+"-"+(z+mapT.mapSize/2))==1) {
+		x = (int)random(15-mapT.mapSize/2, mapT.mapSize/2-15);
+		z = (int)random(15-mapT.mapSize/2, mapT.mapSize/2-15);
+	}
+	mapT.pX = this.x;
+	mapT.pY = this.z;
 	}
 	void paint() {
 		spriteCount++;
@@ -43,29 +44,27 @@ class Player {
 		int tx = x, tz = z;												/*Temporal values of position*/
 		tx += x<m.mapSize/2 && x>-m.mapSize/2?east  - west:0;
 		tz += z<m.mapSize/2 && z>-m.mapSize/2?south - north:0;
-		mapC.fov = keyCode == DOWN? 2000: keyCode == UP? 1000: mapC.fov;
+		mapC.eye = keyCode == DOWN? 2000: keyCode == UP? 1000: mapC.eye;
 		/**/															/*Rewrite position values just if is permitted*/
 		if (m.map.getFloat((tx+m.mapSize/2)+"-"+(tz+m.mapSize/2))!=1) {
-			x = tx; 
-			z = tz;
+			m.pX = x = tx;
+			m.pY = z = tz;
 		}
-		/*if (m.map.getFloat((tx+m.mapSize/2)+"-"+(tz+m.mapSize/2))==10) {
+		if (m.map.getFloat((tx+m.mapSize/2)+"-"+(tz+m.mapSize/2))==10) {
 			println("dungeon");
-		}*/
+			m.pY += 1;													/*<needs to improve>*/
+			mode = 't';
+		}
 	}
 	void move(TerrainDungeon m) {
 		int tx = x, tz = z;												/*Temporal values of position*/
 		tx += x<m.mapSize/2 && x>-m.mapSize/2?east  - west:0;
 		tz += z<m.mapSize/2 && z>-m.mapSize/2?south - north:0;
-		mapC.fov = keyCode == DOWN? 2000: keyCode == UP? 1000: mapC.fov;
 		/**/															/*Rewrite position values just if is permitted*/
 		if (!m.map.isNull((tx+m.mapSize/2)+"-"+(tz+m.mapSize/2))) {
-			x = tx; 
-			z = tz;
+			m.pX = x = tx; 
+			m.pY = z = tz;
 		}
-		/*if (m.map.getFloat((tx+m.mapSize/2)+"-"+(tz+m.mapSize/2))==10) {
-			println("dungeon");
-		}*/
 	}
 	/*<--End Test-->*/
 

@@ -20,9 +20,15 @@ void draw() {
 	background(0);														/*Set a black background*/
 	switch (mode) {
 		case 'g' :
+			mapC.eye = 2000;
+			mapP.x = mapT.pX;
+			mapP.z = mapT.pY;
 			game();														/*Game main map mode*/
 		break;
 		case 't' :
+			mapC.eye = 1000;
+			mapP.x = mapTD.get(0).pX;
+			mapP.z = mapTD.get(0).pY;
 			dungeon();													/*Game dungeon mode **test state*/
 		break;	
 		case 'm':
