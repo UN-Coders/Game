@@ -2,7 +2,7 @@ class Room {
 	int x, y;															/*Position of each room*/
 	boolean[] walls = new boolean[4];									/*Rooms walls*/
 	boolean visited, current, wroom;									/*state of the room {wroom = if is just a space or with Room..}*/
-	Room[] ne = new Room[4];											/*neightbours rooms walls*/
+	Room[] ne = new Room[4];											/*neightbours rooms*/
 	void initWalls(Room[][] room, int mSize) {
 		if (y-1 >= 0)
 			this.ne[0] = room[x][y-1];
@@ -18,25 +18,18 @@ class Room {
 		if (current)select(vis);
 	}
 	void saveDungeon(JSONObject map){
-		if (wroom){
-			if (!walls[0])
-				map.setFloat(x+"-"+y+"tup",0);
-			if (!walls[1])
-				map.setFloat(x+"-"+y+"tright",0);
-			if (!walls[2])
-				map.setFloat(x+"-"+y+"tdown",0);
-			if (!walls[3])
-				map.setFloat(x+"-"+y+"tleft",0);
-		}else {
-			if (!walls[0])
-				map.setFloat(x+"-"+y+"fup",0);
-			if (!walls[1])
-				map.setFloat(x+"-"+y+"fright",0);
-			if (!walls[2])
-				map.setFloat(x+"-"+y+"fdown",0);
-			if (!walls[3])
-				map.setFloat(x+"-"+y+"fleft",0);
-		}
+		int bool = 0;
+		if (wroom)
+			bool += 10000;
+		if (!walls[0])/*UP*/
+			bool += 1;
+		if (!walls[1])/*RIGHT*/
+			bool += 10;
+		if (!walls[2])/*DOWN*/
+			bool +=100;
+		if (!walls[3])/*LEFT*/
+			bool +=1000;
+		map.setFloat(x+"-"+y,bool);
 	}
 	void select(ArrayList<Room> vis) {
 		int dir = (int)random(0, 4);
