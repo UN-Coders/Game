@@ -13,8 +13,8 @@ void setup() {
 	mapP = new Player();												/*Initialization of the Player object*/
 	mapC = new Camera();												/*Initialization of the Map object*/
 	text = new Text();													/*Initialization of the Text object*/
-	fullScreen(P3D);
-	//size(1000, 1000, P3D);
+	//fullScreen(P3D);
+	size(1000, 1000, P3D);
 }
 void draw() {
 	background(0);														/*Set a black background*/
@@ -39,8 +39,8 @@ void game(){
 	mapP.paint();
 	popMatrix();
 	/**/																/*Camera and player Movement*/
-	mapP.move();
-	mapC.move();
+	mapP.move(mapT);
+	mapC.move(mapT);
 	//delay(40);														/*Speed of repainting  **Produce low fps** */
 }
 void dungeon(){															/*Paint dungeonTerrain*/
@@ -50,8 +50,8 @@ void dungeon(){															/*Paint dungeonTerrain*/
 	mapTD.get(0).paint();
 	mapP.paint();
 	popMatrix();
-	mapP.move();
-	mapC.move();
+	mapP.move(mapTD.get(0));
+	mapC.move(mapTD.get(0));
 }
 boolean chance(float percentage) {										/*Chance boolean*/
 		return random(0, 100)<percentage;

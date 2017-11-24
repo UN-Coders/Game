@@ -37,20 +37,38 @@ class Player {
 			image(sp.get(18), 0, 0, pS, pS);
 		popMatrix();
 	}
-	void move() {
+
+	/*<--Start Test-->*/
+	void move(Terrain m) {
 		int tx = x, tz = z;												/*Temporal values of position*/
-		tx += x<mapT.mapSize/2 && x>-mapT.mapSize/2?east  - west:0;
-		tz += z<mapT.mapSize/2 && z>-mapT.mapSize/2?south - north:0;
+		tx += x<m.mapSize/2 && x>-m.mapSize/2?east  - west:0;
+		tz += z<m.mapSize/2 && z>-m.mapSize/2?south - north:0;
 		mapC.fov = keyCode == DOWN? 2000: keyCode == UP? 1000: mapC.fov;
 		/**/															/*Rewrite position values just if is permitted*/
-		if (mapT.map.getFloat((tx+mapT.mapSize/2)+"-"+(tz+mapT.mapSize/2))!=1) {
+		if (m.map.getFloat((tx+m.mapSize/2)+"-"+(tz+m.mapSize/2))!=1) {
 			x = tx; 
 			z = tz;
 		}
-		if (mapT.map.getFloat((tx+mapT.mapSize/2)+"-"+(tz+mapT.mapSize/2))==10) {
+		/*if (m.map.getFloat((tx+m.mapSize/2)+"-"+(tz+m.mapSize/2))==10) {
 			println("dungeon");
-		}
+		}*/
 	}
+	void move(TerrainDungeon m) {
+		int tx = x, tz = z;												/*Temporal values of position*/
+		tx += x<m.mapSize/2 && x>-m.mapSize/2?east  - west:0;
+		tz += z<m.mapSize/2 && z>-m.mapSize/2?south - north:0;
+		mapC.fov = keyCode == DOWN? 2000: keyCode == UP? 1000: mapC.fov;
+		/**/															/*Rewrite position values just if is permitted*/
+		if (!m.map.isNull((tx+m.mapSize/2)+"-"+(tz+m.mapSize/2))) {
+			x = tx; 
+			z = tz;
+		}
+		/*if (m.map.getFloat((tx+m.mapSize/2)+"-"+(tz+m.mapSize/2))==10) {
+			println("dungeon");
+		}*/
+	}
+	/*<--End Test-->*/
+
 	/**/																/*k = keyListener, spd if 1 "true" direction: stop*/
 	void setDirection(int k, int spd) {									
 		if      (k == 'W')

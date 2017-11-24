@@ -75,10 +75,10 @@ class Terrain {
 	void paintMinimap() {												/*Minimap*/
 		pushMatrix();
 		translate(width/2, height/2);
-		image(cMap, 0,0, width,width);
+		image(cMap, 0,0, height,height);
 		/**/															/*Player in minimap*/
 		fill(255, 0, 0);
-		rect(map(mapP.x,-mapSize/2,mapSize/2,-width/2,width/2), map(mapP.z,-mapSize/2,mapSize/2,-width/2,width/2), 10, 10);
+		rect(map(mapP.x,-mapSize/2,mapSize/2,-height/2,height/2), map(mapP.z,-mapSize/2,mapSize/2,-height/2,height/2), height/mapSquareSize, height/mapSquareSize);
 		popMatrix();
 	}
 	Terrain() {
