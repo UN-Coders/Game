@@ -21,13 +21,13 @@ class Room {
 		int bool = 0;
 		if (wroom)
 			bool += 10000;
-		if (!walls[0])/*UP*/
+		if (!walls[0])													/*UP*/
 			bool += 1;
-		if (!walls[1])/*RIGHT*/
+		if (!walls[1])													/*RIGHT*/
 			bool += 10;
-		if (!walls[2])/*DOWN*/
+		if (!walls[2])													/*DOWN*/
 			bool +=100;
-		if (!walls[3])/*LEFT*/
+		if (!walls[3])													/*LEFT*/
 			bool +=1000;
 		map.setFloat(x+"-"+y,bool);
 	}
@@ -39,22 +39,15 @@ class Room {
 					ne[dir].current = true;
 					this.current = false;
 					vis.add(this);
-					if (dir == 0) {
-						this.walls[0] = false;
+					this.walls[dir] = false;
+					if (dir == 0)
 						ne[dir].walls[2] = false;
-					}
-					if (dir == 1) {
-						this.walls[1] = false;
+					if (dir == 1)
 						ne[dir].walls[3] = false;
-					}
-					if (dir == 2) {
-						this.walls[2] = false;
+					if (dir == 2)
 						ne[dir].walls[0] = false;
-					}
-					if (dir == 3) {
-						this.walls[3] = false;
+					if (dir == 3)
 						ne[dir].walls[1] = false;
-					}
 				}
 			} else {
 				this.current = false;

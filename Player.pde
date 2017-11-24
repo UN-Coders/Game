@@ -8,7 +8,7 @@ class Player {
 	void init(int k) {													/*Initialization of the object, arg "k" = (key of keyListener)*/
 	sprite = loadImage("Sprites/Sprite "+(k-(int)'0')+".png");
 	sp.clear();
-	for (int j = 512; j<767; j+=64)									/*Sprite movement section*/
+	for (int j = 512; j<767; j+=64)										/*Sprite movement section*/
 		for (int i = 0; i<575; i+=64)
 			sp.add(sprite.get(i, j, 64, 64));
 
@@ -50,19 +50,19 @@ class Player {
 	}
 	/**/																/*k = keyListener, spd if 1 "true" direction: stop*/
 	void setDirection(int k, int spd) {									
-		if      (k == 'W')  
+		if      (k == 'W')
 			north = spd;
-		else if (k == 'S')  
+		else if (k == 'S')
 			south = spd;
-		else if (k == 'A')  
+		else if (k == 'A')
 			west  = spd;
-		else if (k == 'D')  
+		else if (k == 'D')
 			east  = spd;
 	}
 	Player() {
-		this.x = (int)random(15-mapT.mapSize/2, mapT.mapSize/2-15);;
+		this.x = (int)random(15-mapT.mapSize/2, mapT.mapSize/2-15);
 		this.y = 0;
-		this.z = (int)random(15-mapT.mapSize/2, mapT.mapSize/2-15);;
+		this.z = (int)random(15-mapT.mapSize/2, mapT.mapSize/2-15);
 		this.pS = mapT.mapSquareSize;
 		init((int)'1');													/*Player Initialization, arg = key*/
 	}

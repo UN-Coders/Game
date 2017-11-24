@@ -11,6 +11,6 @@ class Camera {
 			z = mapP.z*mapP.pS;
 	}
 	Camera(){
-		this.fov = 2000;
+		this.fov = 4000;
 	}
 }

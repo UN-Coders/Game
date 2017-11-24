@@ -1,28 +1,28 @@
 class TerrainDungeon{
 	JSONObject h;
 	Dungeon n1;
-	int s;
-	void init() {
-		n1 = new Dungeon("Test");
-		//h = loadJSONObject("save/miniDungeonTest.json");				/*Use for load the save*/
-		h = loadJSONObject("save/finalDungeonTest.json");				/*Use for load the save*/
+	int size;
+	void init(String s) {
+		n1 = new Dungeon(s);
+		//h = loadJSONObject("save/Dungeon/"+s+"/mini.json");			/*Use for load the save*/
+		h = loadJSONObject("save/Dungeon/"+s+"/final.json");			/*Use for load the save*/
 	}
 
 	void paint() {
 		pushMatrix();
 		rotateX(PI/2);
-		translate(s/2-s*s/2, s/2-s*s/2);
-		for (int x = 0; x < 12*8; x++) {
-			for (int y = 0; y < 12*8; y++) {
+		translate(size/2-size*size/2, size/2-size*size/2);
+		for (int x = 0; x < n1.mSize*n1.rSize; x++) {
+			for (int y = 0; y < n1.mSize*n1.rSize; y++) {
 				if(h.isNull(x+"-"+y)) fill(81,51,81);
 				else fill(100);
-				rect(x*s, y*s, s, s);
+				rect(x*size, y*size, size, size);
 			}
 		}
 		popMatrix();
 	}
-	TerrainDungeon(){
-		s = mapT.mapSize; 												/*12*8 is the mapSize of the dungeon*/
-		init();
+	TerrainDungeon(String s){
+		size = mapT.mapSize;											/*12*8 is the mapSize of the dungeon*/
+		init(s);
 	}
 }
