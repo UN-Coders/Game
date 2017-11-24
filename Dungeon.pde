@@ -32,7 +32,7 @@ class Dungeon{
 		for (int x = 0; x<mSize; x++)
 			for (int y = 0; y<mSize; y++)
 				room[x][y].saveDungeon(map);
-		saveJSONObject(map,"data/save/miniMap"+s+".json");
+		saveJSONObject(map,"data/save/miniDungeon"+s+".json");
 		transformMap(s);
 	}
 	void transformMap(String s){
@@ -80,7 +80,7 @@ class Dungeon{
 				} /*ROOM*/
 			}
 		}
-		saveJSONObject(fmap,"data/save/finalMap"+s+".json");
+		saveJSONObject(fmap,"data/save/finalDungeon"+s+".json");
 	}
 	Dungeon(String s){
 		init(s);

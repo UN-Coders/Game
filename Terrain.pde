@@ -39,8 +39,8 @@ class Terrain {
 				}
 			}
 		}
-		cMap.save("save/map.png");										/*save Minimap image*/
-		saveJSONObject(map,"save/saveMap.json");						/*save Map json*/
+		cMap.save("data/save/map.png");									/*save Minimap image*/
+		saveJSONObject(map,"data/save/mainMap.json");					/*save Map json*/
 		/**/															/*@@@ end @@@*/
 	}
 

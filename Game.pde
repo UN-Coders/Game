@@ -2,22 +2,26 @@ Terrain mapT;															/*Declaration of the Terrain object*/
 Player mapP;															/*Declaration of the Player object*/
 Camera mapC;															/*Declaration of the Map object*/
 Text text;																/*Declaration of the Text object*/
-
+TerrainDungeon mapTD;													/*Declaration of the TerrainDungeon object*/
 char mode = 'g';
 void setup() {
 	frameRate(60);														/*Set max fps*/
 	mapT = new Terrain();												/*Initialization of the Terrain object*/
+	mapTD = new TerrainDungeon();										/*Initialization of the Terrain Dungeon object*/
 	mapP = new Player();												/*Initialization of the Player object*/
 	mapC = new Camera();												/*Initialization of the Map object*/
 	text = new Text();													/*Initialization of the Text object*/
-	fullScreen(P3D);
-	//size(1000, 1000, P3D);
+	//fullScreen(P3D);
+	size(1000, 1000, P3D);
 }
 void draw() {
 	background(0);														/*Set a black background*/
 	switch (mode) {
 		case 'g' :
-			game();
+			game();														/*Game main map mode*/
+		break;
+		case 't' :
+			dungeon();												/*Game dungeon mode **test state*/
 		break;	
 		case 'm':
 			mapT.paintMinimap();
@@ -35,15 +39,27 @@ void game(){
 	/**/																/*Camera and player Movement*/
 	mapP.move();
 	mapC.move();
-	delay(40);															/*Speed of repainting  **Produce low fps** */
+	//delay(40);															/*Speed of repainting  **Produce low fps** */
 }
-
+void dungeon(){
+	pushMatrix();
+	//translate(width/2, height/2);
+	mapC.paint();
+	mapTD.paint();
+	mapP.paint();
+	popMatrix();
+	mapP.move();
+	mapC.move();
+}
+boolean chance(float percentage) {										/*Chance boolean*/
+		return random(0, 100)<percentage;
+	}
 /**/																	/*Player Movement Directions*/
 void keyPressed() {
 	mapP.setDirection(keyCode, 1); 
 	if (key == '1' || key == '2' || key == '3' || key == '4')
 		mapP.init(key);
-	if (key == 'm'|| key == 'g')
+	if (key == 'm'|| key == 'g' || key == 't')
 		mode = key;
 }
 void keyReleased() {

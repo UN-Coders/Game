@@ -3,12 +3,15 @@ class TerrainDungeon{
 	Dungeon n1;
 	int s;
 	void init() {
-		n1 = new Dungeon("test");
-		//h = loadJSONObject("data/save/miniMapTest.json");				/*Use for load the save*/
-		h = loadJSONObject("data/save/finalMapTest.json");				/*Use for load the save*/
+		n1 = new Dungeon("Test");
+		//h = loadJSONObject("save/miniDungeonTest.json");				/*Use for load the save*/
+		h = loadJSONObject("save/finalDungeonTest.json");				/*Use for load the save*/
 	}
 
 	void paint() {
+		pushMatrix();
+		rotateX(PI/2);
+		translate(s/2-s*s/2, s/2-s*s/2);
 		for (int x = 0; x < 12*8; x++) {
 			for (int y = 0; y < 12*8; y++) {
 				if(h.isNull(x+"-"+y)) fill(81,51,81);
@@ -16,12 +19,10 @@ class TerrainDungeon{
 				rect(x*s, y*s, s, s);
 			}
 		}
-	}
-	boolean chance(float percentage) {
-		return random(0, 100)<percentage;
+		popMatrix();
 	}
 	TerrainDungeon(){
-		s = width/(12*8); 												/*12*8 is the mapSize of the dungeon*/
+		s = mapT.mapSize; 												/*12*8 is the mapSize of the dungeon*/
 		init();
 	}
 }
