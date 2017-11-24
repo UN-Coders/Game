@@ -4,7 +4,6 @@ TODO task:
 			Testing:
 				☐	 Menu. @critical
 				☐	 Sprite character selection. @low @started(17-11-23)
-				☐	 Dungeon entrance in main map. @high
 
 			☐	@SGarnicaQ @HASPIMA
 			testingDungeon:
@@ -18,5 +17,6 @@ TODO task:
 
 ＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿
 Archive:
+	✔	 Dungeon entrance in main map. @high @started(17-11-24) @done (17-11-24) @lasted(less than day) @project(TODO task / Branches / master / Testing)
 	✔	 Random terrain generation in Dungeons. @high @started(17-10-14) @done (17-11-21) @lasted(38 days) @project(TODO task / Branches / master / testingDungeon)
 	✔	 Random terrain generation in main map. @started(17-10-7) @done (17-10-14) @lasted(7 days) @project(TODO task / Branches / master / Testing)
