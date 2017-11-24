@@ -1,11 +1,10 @@
 class Dungeon{
-	String s;
 	JSONObject map = new JSONObject();									/*JSON temporal map*/
 	JSONObject fmap = new JSONObject();									/*JSON final map*/
-	int mSize = 12;														/*map size*/
+	int mSize = 12, rSize = 8;											/*map size, room size*/
 	ArrayList<Room> vis = new ArrayList<Room>();						/*Visited rooms*/
 	Room[][] room;														/*All the rooms*/
-	void init() {
+	void init(String s) {
 		room= new Room[mSize][mSize];									/*Create the space*/
 		/**/															/*init each room in the space*/
 		for (int x = 0; x<mSize; x++)
@@ -33,33 +32,33 @@ class Dungeon{
 		for (int x = 0; x<mSize; x++)
 			for (int y = 0; y<mSize; y++)
 				room[x][y].saveDungeon(map);
-		saveJSONObject(map,"data/save/saveMap"+s+".json");
-		transformMap();
+		saveJSONObject(map,"data/save/miniMap"+s+".json");
+		transformMap(s);
 	}
-	void transformMap(){
-		for (int x = 0; x < 12; x++) {
-			for (int y = 0; y < 12; y++) {
+	void transformMap(String s){
+		for (int x = 0; x < mSize; x++) {
+			for (int y = 0; y < mSize; y++) {
 				float temp = map.getFloat(x+"-"+y);
 				if(!(int(temp*0.1)*10 == temp)){
 					for (int mx = 3; mx < 5; mx++) {
 						for (int my = 0; my < 5; my++) {
-							fmap.setFloat((x*8+mx)+"-"+(y*8+my),1);
+							fmap.setFloat((x*rSize+mx)+"-"+(y*rSize+my),1);
 						}
 					}
 				} /*UP*/
 				temp = int(temp*0.1);
 				if(!(int(temp*0.1)*10 == temp)){
-					for (int mx = 3; mx < 8; mx++) {
+					for (int mx = 3; mx < rSize; mx++) {
 						for (int my = 3; my < 5; my++) {
-							fmap.setFloat((x*8+mx)+"-"+(y*8+my),1);
+							fmap.setFloat((x*rSize+mx)+"-"+(y*rSize+my),1);
 						}
 					}
 				} /*RIGHT*/
 				temp = int(temp*0.1);
 				if(!(int(temp*0.1)*10 == temp)){
 					for (int mx = 3; mx < 5; mx++) {
-						for (int my = 3; my < 8; my++) {
-							fmap.setFloat((x*8+mx)+"-"+(y*8+my),1);
+						for (int my = 3; my < rSize; my++) {
+							fmap.setFloat((x*rSize+mx)+"-"+(y*rSize+my),1);
 						}
 					}
 				} /*DOWN*/
@@ -67,7 +66,7 @@ class Dungeon{
 				if(!(int(temp*0.1)*10 == temp)){
 					for (int mx = 0; mx < 5; mx++) {
 						for (int my = 3; my < 5; my++) {
-							fmap.setFloat((x*8+mx)+"-"+(y*8+my),1);
+							fmap.setFloat((x*rSize+mx)+"-"+(y*rSize+my),1);
 						}
 					}
 				} /*LEFT*/
@@ -75,16 +74,15 @@ class Dungeon{
 				if(!(int(temp*0.1)*10 == temp)){
 					for (int mx = 2; mx < 6; mx++) {
 						for (int my = 2; my < 6; my++) {
-							fmap.setFloat((x*8+mx)+"-"+(y*8+my),1);
+							fmap.setFloat((x*rSize+mx)+"-"+(y*rSize+my),1);
 						}
 					}
 				} /*ROOM*/
 			}
 		}
-		saveJSONObject(fmap,"data/save/finalMapTest.json");
+		saveJSONObject(fmap,"data/save/finalMap"+s+".json");
 	}
 	Dungeon(String s){
-		this.s = s;
-		init();
+		init(s);
 	}
 }
