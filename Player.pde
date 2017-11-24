@@ -47,6 +47,9 @@ class Player {
 			x = tx; 
 			z = tz;
 		}
+		if (mapT.map.getFloat((tx+mapT.mapSize/2)+"-"+(tz+mapT.mapSize/2))==10) {
+			println("dungeon");
+		}
 	}
 	/**/																/*k = keyListener, spd if 1 "true" direction: stop*/
 	void setDirection(int k, int spd) {									
