@@ -1,0 +1,22 @@
+TODO task:
+	Branches:
+		master: 
+			Testing:
+				☐	 Menu. @critical
+				☐	 Sprite character selection. @low @started(17-11-23)
+				☐	 Dungeon entrance in main map. @high
+
+			☐	@SGarnicaQ @HASPIMA
+			testingDungeon:
+				☐	 Dungeon Implementation @started(17-11-23) @high
+
+			☐	@davilab
+			Battle:
+				☐	 Battles implementation @critical @started(17-11-21)
+				☐	 IA for enemies. @high @started(17-11-21)
+				☐	 Player stats, item, armor ... @low @started(17-11-21)
+
+＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿
+Archive:
+	✔	 Random terrain generation in Dungeons. @high @started(17-10-14) @done (17-11-21) @lasted(38 days) @project(TODO task / Branches / master / testingDungeon)
+	✔	 Random terrain generation in main map. @started(17-10-7) @done (17-10-14) @lasted(7 days) @project(TODO task / Branches / master / Testing)
