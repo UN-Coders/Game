@@ -32,5 +32,4 @@ class Button{
 		this.sCol = color(150,100,100,200);
 
 	}
-
 }

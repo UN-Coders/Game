@@ -7,7 +7,7 @@ class Menu{
 			b.paint();
 	}
 	Menu(){
-		m = loadImage("Menu/menu.jpg");
+		m = loadImage("Menu/Menu.jpg");
 		String[] buttonsText = {"New Game","Load Game","Options", "Credits"};
 		for(int t = 0; t < buttonsText.length; t++)
 			buttons.add(new Button(buttonsText[t],width/5,height*(t+4)/8,width*4/5,height*(t+5)/8));

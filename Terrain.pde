@@ -79,6 +79,7 @@ class Terrain {
 		image(cMap, 0,0, height,height);
 		/**/															/*Player in minimap*/
 		fill(255, 0, 0);
+		rectMode(CORNER);
 		rect(map(mapP.x,-mapSize/2,mapSize/2,-height/2,height/2), map(mapP.z,-mapSize/2,mapSize/2,-height/2,height/2), height/mapSquareSize, height/mapSquareSize);
 		popMatrix();
 	}
