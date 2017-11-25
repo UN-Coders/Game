@@ -2,6 +2,7 @@ Terrain mapT;															/*Declaration of the Terrain object*/
 Player mapP;															/*Declaration of the Player object*/
 Camera mapC;															/*Declaration of the Map object*/
 Text text;																/*Declaration of the Text object*/
+Menu menu;																/*Declaration of the Menu object*/
 ArrayList<TerrainDungeon> mapTD = new ArrayList<TerrainDungeon>();		/*Declaration of the TerrainDungeon object*/
 char mode = 'g';
 void setup() {
@@ -13,8 +14,9 @@ void setup() {
 	mapP = new Player();												/*Initialization of the Player object*/
 	mapC = new Camera();												/*Initialization of the Map object*/
 	text = new Text();													/*Initialization of the Text object*/
+	menu = new Menu();													/*Initialization of the Menu object*/
 	//fullScreen(P3D);
-	size(1000, 1000, P3D);
+	size(1200, 800, P3D);
 }
 void draw() {
 	background(0);														/*Set a black background*/
@@ -24,18 +26,22 @@ void draw() {
 			mapP.x = mapT.pX;
 			mapP.z = mapT.pY;
 			game();														/*Game main map mode*/
+			text.paint();														/*Paint debug Screen*/
 		break;
 		case 't' :
 			mapC.eye = 1000;
 			mapP.x = mapTD.get(0).pX;
 			mapP.z = mapTD.get(0).pY;
 			dungeon();													/*Game dungeon mode **test state*/
-		break;	
+			text.paint();														/*Paint debug Screen*/
+		break;
 		case 'm':
 			mapT.paintMinimap();
-		break;	
+		break;
+		case 'i':
+			menu.paint();
+		break;
 	}
-	text.paint();														/*Paint debug Screen*/
 }
 
 void game(){
@@ -60,14 +66,14 @@ void dungeon(){															/*Paint dungeonTerrain*/
 	mapC.move(mapTD.get(0));
 }
 boolean chance(float percentage) {										/*Chance boolean*/
-		return random(0, 100)<percentage;
-	}
+	return random(0, 100)<percentage;
+}
 /**/																	/*Player Movement Directions*/
 void keyPressed() {
 	mapP.setDirection(keyCode, 1); 
 	if (key == '1' || key == '2' || key == '3' || key == '4')
 		mapP.init(key);
-	if (key == 'm'|| key == 'g' || key == 't')
+	if (key == 'm'|| key == 'g' || key == 't' || key == 'i')
 		mode = key;
 }
 void keyReleased() {
