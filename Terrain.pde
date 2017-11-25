@@ -9,9 +9,9 @@ class Terrain {
 		cMap = createImage(1000,1000,RGB);								/*map unique image*/
 		for (int i = 0; i<8; i++){
 			s[i] = loadImage("Terrain/Suelo"+(i+1)+".jpg");				/*Load the terrain textures*/
-			s[i].resize(cMap.width/mapSquareSize,cMap.width/mapSquareSize);
+			s[i].resize(cMap.width/mapSize,cMap.width/mapSize);
 		}
-		/**/															/*@@@ Noise Generator in HashMap and minimap@@@*/
+		/**/															/*<-- Noise Generator in HashMap and minimap -->*/
 		noiseDetail(4, 0.53);
 		float increment = 0.1;
 		float xoff = 0.0;
@@ -48,9 +48,9 @@ class Terrain {
 				cMap.set(int(dun.x)*cMap.width/mapSquareSize,int(dun.y)*cMap.width/mapSquareSize,s[5]);	
 			}
 		}
-		cMap.save("data/save/map.png");									/*save Minimap image*/
-		saveJSONObject(map,"data/save/mainMap.json");					/*save Map json*/
-		/**/															/*@@@ end @@@*/
+		cMap.save("data/Save/Map.png");									/*save Minimap image*/
+		saveJSONObject(map,"data/Save/Map.json");						/*save Map json*/
+		/**/															/*<-- end -->*/
 	}
 
 	void paint() {														/*Terrain Visualization*/
@@ -76,7 +76,8 @@ class Terrain {
 	void paintMinimap() {												/*Minimap*/
 		pushMatrix();
 		translate(width/2, height/2);
-		image(cMap, 0,0, height,height);
+		imageMode(CENTER);
+		image(cMap, 0, 0, height,height);
 		/**/															/*Player in minimap*/
 		fill(255, 0, 0);
 		rectMode(CORNER);

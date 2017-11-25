@@ -5,7 +5,6 @@ class Button{
 	void paint(){
 		pushMatrix();
 		rectMode(CORNERS);
-		noStroke();
 		if(selected())
 			fill(sCol);
 		else
@@ -22,14 +21,25 @@ class Button{
 			return true;
 		else return false;
 	}
-	Button (String text,int x,int y,int x2,int y2) {
+	boolean clicked(){
+		if(selected() && mousePressed)
+			return true;
+		else
+			return false;
+	}
+	void init(String text,int x,int y,int x2,int y2, color col){
 		this.text = text;
 		this.x = x+10;
 		this.y = y+10;
 		this.x2 = x2-10;
 		this.y2 = y2-10;
-		this.nCol = color(150,100,150,200);
-		this.sCol = color(150,100,100,200);
-
+		this.nCol = col;
+		this.sCol = color(red(col), green(col)-50, blue(col),alpha(col));
+	}
+	Button (String text,int x,int y,int x2,int y2, color col) {
+		init(text, x, y, x2, y2, col);
+	}
+	Button (String text,int x,int y,int x2,int y2) {
+		init(text, x, y, x2, y2, color(150, 100, 150, 200));
 	}
 }

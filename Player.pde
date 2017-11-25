@@ -2,7 +2,7 @@ int north, south, west, east;											/*Direcciones del jugador*/
 
 class Player {
 	int x, y, z, pS;													/*Position, pS = player spriteSize*/
-	int spriteCount = 0;												/*Sprite frame visualization control value*/
+	float spriteCount = 0, spriteSpeed = 0.2;							/*Sprite frame visualization control value*/
 	PImage sprite = new PImage();										/*Sprite complete Image*/
 	ArrayList<PImage> sp = new ArrayList<PImage>();						/*Sprite div of `PImage sprite` in an arrayList*/
 	void init(int k) {													/*Initialization of the object, arg "k" = (key of keyListener)*/
@@ -19,21 +19,20 @@ class Player {
 	mapT.pY = this.z;
 	}
 	void paint() {
-		spriteCount++;
-		if (spriteCount == 8)
-			spriteCount=0;
+		spriteCount = spriteCount>=8? 0: spriteCount+spriteSpeed;
+
 		pushMatrix();
 		imageMode(CENTER);
 		rotateX(PI/2);
-		translate(x*pS, z*pS);
+		translate(x*pS, z*pS, 1);
 		if      (south - north == -1) 
-			image(sp.get( 0+spriteCount), 0, 0, pS, pS);
+			image(sp.get( 0+(int)spriteCount), 0, 0, pS, pS);
 		else if (east  - west  == -1) 
-			image(sp.get( 9+spriteCount), 0, 0, pS, pS);
+			image(sp.get( 9+(int)spriteCount), 0, 0, pS, pS);
 		else if (east  - west  ==  1) 
-			image(sp.get(27+spriteCount), 0, 0, pS, pS);
+			image(sp.get(27+(int)spriteCount), 0, 0, pS, pS);
 		else if (south - north ==  1) 
-			image(sp.get(18+spriteCount), 0, 0, pS, pS);
+			image(sp.get(18+(int)spriteCount), 0, 0, pS, pS);
 		else
 			image(sp.get(18), 0, 0, pS, pS);
 		popMatrix();
@@ -44,14 +43,13 @@ class Player {
 		int tx = x, tz = z;												/*Temporal values of position*/
 		tx += x<m.mapSize/2 && x>-m.mapSize/2?east  - west:0;
 		tz += z<m.mapSize/2 && z>-m.mapSize/2?south - north:0;
-		mapC.eye = keyCode == DOWN? 2000: keyCode == UP? 1000: mapC.eye;
 		/**/															/*Rewrite position values just if is permitted*/
 		if (m.map.getFloat((tx+m.mapSize/2)+"-"+(tz+m.mapSize/2))!=1) {
 			m.pX = x = tx;
 			m.pY = z = tz;
 		}
 		if (m.map.getFloat((tx+m.mapSize/2)+"-"+(tz+m.mapSize/2))==10) {
-			println("dungeon");
+			println("A new Dungeon!!!!!");
 			m.pY += 1;													/*<needs to improve>*/
 			mode = 't';
 		}
