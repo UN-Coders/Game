@@ -44,9 +44,9 @@ void draw() {
 }
 void newGame(){
 	mapT = new Terrain();												/*Initialization of the Terrain object*/
-	for (int i = 0; i < 9; i++) {
-		mapTD.add(new TerrainDungeon(""+i));							/*Initialization of the Terrain Dungeon object*/
-	}
+	// for (int i = 0; i < 9; i++) {
+	// 	mapTD.add(new TerrainDungeon(""+i));							/*Initialization of the Terrain Dungeon object*/
+	// }
 	mapP = new Player();												/*Initialization of the Player object*/
 	mapC = new Camera();												/*Initialization of the Map object*/
 	text = new Text();													/*Initialization of the Text object*/

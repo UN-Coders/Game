@@ -11,12 +11,12 @@ class Player {
 	for (int j = 512; j<767; j+=64)										/*Sprite movement section*/
 		for (int i = 0; i<575; i+=64)
 			sp.add(sprite.get(i, j, 64, 64));
-	while (mapT.map.getFloat((x+mapT.mapSize/2)+"-"+(z+mapT.mapSize/2))==1) {
-		x = (int)random(15-mapT.mapSize/2, mapT.mapSize/2-15);
-		z = (int)random(15-mapT.mapSize/2, mapT.mapSize/2-15);
-	}
-	mapT.pX = this.x;
-	mapT.pY = this.z;
+		while (mapT.map.getFloat((x+mapT.mapSize/2)+"-"+(z+mapT.mapSize/2))==1) {
+			x = (int)random(15-mapT.mapSize/2, mapT.mapSize/2-15);
+			z = (int)random(15-mapT.mapSize/2, mapT.mapSize/2-15);
+		}
+		mapT.pX = this.x;
+		mapT.pY = this.z;
 	}
 	void paint() {
 		spriteCount = spriteCount>=8? 0: spriteCount+spriteSpeed;
@@ -49,7 +49,13 @@ class Player {
 			m.pY = z = tz;
 		}
 		if (m.map.getFloat((tx+m.mapSize/2)+"-"+(tz+m.mapSize/2))==10) {
-			println("A new Dungeon!!!!!");
+			
+			File file = new File(sketchPath()+"/data/Save/Dungeon/");
+			String[] filenames = file.list();
+			if(filenames.length < 9){
+				println("A new Dungeon!!!!!");
+				mapTD.add(new TerrainDungeon(""+filenames.length));
+			}
 			m.pY += 1;													/*<needs to improve>*/
 			mode = 't';
 		}
