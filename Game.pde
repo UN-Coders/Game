@@ -1,9 +1,11 @@
 Terrain mapT;															/*Declaration of the Terrain object*/
 Player mapP;															/*Declaration of the Player object*/
 Camera mapC;															/*Declaration of the Map object*/
-Text text;																/*Declaration of the Text object*/
+Debug text;																/*Declaration of the Debug object*/
 Menu menu;																/*Declaration of the Menu object*/
 ArrayList<TerrainDungeon> mapTD = new ArrayList<TerrainDungeon>();		/*Declaration of the TerrainDungeon object*/
+Dialogue talk;
+String dialogue;
 PFont font = new PFont();												/*Text font*/
 char mode = 'i';														/*Game status mode*/
 
@@ -12,6 +14,8 @@ void setup() {
 	menu = new Menu();													/*Initialization of the Menu object*/
 	font = loadFont("font/ARESSENCE-48.vlw");							/*Set font*/
 	textFont(font, 48);
+	talk = new Dialogue();
+	dialogue = ".";
 	noStroke();
 	// fullScreen(P3D);
 	size(1200, 800, P3D);
@@ -20,6 +24,7 @@ void setup() {
 void draw() {
 	background(0);														/*Set a black background*/
 	try {
+		talk.paint(dialogue);
 		switch (mode) {
 			case 'g' :
 			mapC.eye = 2000;
@@ -42,7 +47,7 @@ void draw() {
 			case 'c':
 			credits();													/*Credit **Need Design Enhacement***/
 			break;	
-		}	
+		}
 	} catch (Exception e) {
 		println("General exeption: "+e);
 	}
@@ -51,7 +56,7 @@ void newGame(){
 	mapT = new Terrain();												/*Initialization of the Terrain object*/
 	mapP = new Player();												/*Initialization of the Player object*/
 	mapC = new Camera();												/*Initialization of the Map object*/
-	text = new Text();													/*Initialization of the Text object*/
+	text = new Debug();													/*Initialization of the Text object*/
 	String[] dungeonF = {"some","text"};								/*For the creation of Dungeon folder **Important***/
 	saveStrings("data/Save/Dungeon/dungeon.txt",dungeonF);
 }
@@ -126,4 +131,11 @@ void keyReleased() {
 	} catch (Exception e) {
 		println("exeption Player Movement: "+e);
 	}
+}
+float skip = 1;
+void mouseDragged(){
+	skip = 5;
+}
+void mouseReleased() {
+	skip = 1;
 }

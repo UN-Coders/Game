@@ -53,7 +53,7 @@ class Player {
 			File file = new File(sketchPath()+"/data/Save/Dungeon/");
 			String[] filenames = file.list();
 			if(filenames.length < 9){
-				println("A new Dungeon!!!!!");
+				dialogue = "Dungeon";
 				mapTD.add(new TerrainDungeon(""+filenames.length));
 			}
 			m.pY += 1;													/*<needs to improve>*/

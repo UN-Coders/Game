@@ -1,0 +1,23 @@
+{
+	"Main": 
+	[
+		"First line , need 3",
+		"Second Line , need 4",
+		"Third Line , 2",
+		"Fourth Line , more than 10 seconds = 1000 tics",
+	],
+	"MainTempos": [300,400,200,1000],
+	"Dungeon": 
+	[
+		"Huele mal!",
+		"Quizas no deberia estar aca, pero no debo temer",
+		"tendre que seguir mi camino para llegar a mi objetivo"
+	],
+	"DungeonTempos": [50,200,300],
+	"Dungeon2":
+	[
+		"Mmmmmm..., otra ruina, tal vez encuentre algo de valor dentro",
+		"debo entrar para descubrirlo"
+	],
+	"Dungeon2Tempos": [400,200],
+}
