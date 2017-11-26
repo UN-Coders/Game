@@ -9,7 +9,8 @@ TODO task:
 		☐	@davilab
 		Battle:
 			☐	 Battles implementation @critical @started(17-11-21)
-			☐	 IA for enemies. @high @started(17-11-21)
+			☐	 Pattern attack for enemies @critical @started(17-11-25)
+			☐	 IA for enemies. @low @started(17-11-21)
 			☐	 Player stats, item, armor ... @low @started(17-11-21)
 
 		☐	@R-WolfGang
