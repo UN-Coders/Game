@@ -20,17 +20,19 @@ class Menu{
 					println("Options not implementated yet");
 					break;
 					case "Credits" :
-					println("Credits not implementated yet");
+					mode = 'c';
 					break;	
 				}
 			}
 		}
 	}
+	int w = width, h = height;
 	void resizeButton(){
-		if(w != width){
+		if(w != width || h != height){
 			for (Button b : buttons) 
 				b.resize();
 			w = width;
+			h = height;
 		}
 	}
 	Menu(){
@@ -38,6 +40,6 @@ class Menu{
 		String[] buttonsText = {"New Game","Load Game","Options", "Credits"};
 		color bCol = color(100, 100, 100, 200);
 		for(int t = 0; t < buttonsText.length; t++)
-			buttons.add(new Button(buttonsText[t],0.25,0.10*(t+5),0.75,0.10*(t+6),bCol));
+			buttons.add(new Button(buttonsText[t],0.25,0.13*(t+3),0.75,0.13*(t+4),bCol));
 	}
 }

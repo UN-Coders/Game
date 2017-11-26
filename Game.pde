@@ -7,7 +7,6 @@ ArrayList<TerrainDungeon> mapTD = new ArrayList<TerrainDungeon>();		/*Declaratio
 PFont font = new PFont();												/*Text font*/
 char mode = 'i';														/*Game status mode*/
 
-int w;
 void setup() {
 	frameRate(60);														/*Set max fps*/
 	menu = new Menu();													/*Initialization of the Menu object*/
@@ -16,8 +15,7 @@ void setup() {
 	noStroke();
 	// fullScreen(P3D);
 	size(1200, 800, P3D);
-	surface.setResizable(true);
-	w = width;
+	surface.setResizable(true);											/*Let change window size*/
 }
 void draw() {
 	background(0);														/*Set a black background*/
@@ -33,24 +31,24 @@ void draw() {
 			mapC.eye = 1000;
 			mapP.x = mapTD.get(0).pX;
 			mapP.z = mapTD.get(0).pY;
-			dungeon();													/*Game dungeon mode **test state*/
+			dungeon();													/*Game dungeon mode*/
 			break;
 			case 'm':
-			mapT.paintMinimap();
+			mapT.paintMinimap();										/*Minimap Visualization*/
 			break;
 			case 'i':
-			menu.paint();
+			menu.paint();												/*Game Menu*/
 			break;
+			case 'c':
+			credits();													/*Credit **Need Design Enhacement***/
+			break;	
 		}	
 	} catch (Exception e) {
-		println("exeption: "+e);
+		println("General exeption: "+e);
 	}
 }
 void newGame(){
 	mapT = new Terrain();												/*Initialization of the Terrain object*/
-	// for (int i = 0; i < 9; i++) {
-	// 	mapTD.add(new TerrainDungeon(""+i));							/*Initialization of the Terrain Dungeon object*/
-	// }
 	mapP = new Player();												/*Initialization of the Player object*/
 	mapC = new Camera();												/*Initialization of the Map object*/
 	text = new Text();													/*Initialization of the Text object*/
@@ -79,8 +77,18 @@ void dungeon(){															/*Paint dungeonTerrain*/
 
 	mapP.move(mapTD.get(0));
 	mapC.move(mapTD.get(0));
-
-	text.paint();
+}
+void credits(){
+	fill(255,250,0);
+	text("Coders", width*0.5, height*0.15);
+	fill(255);
+	text("Sebastian Garnica", width*0.5, height*0.30);
+	text("Esteban Avila", width*0.5, height*0.45);
+	text("Harrison Pinto", width*0.5, height*0.60);
+	fill(255,250,0);
+	text("Designer", width*0.5, height*0.75);
+	fill(255);
+	text("Nicolas Arias", width*0.5, height*0.90);
 }
 boolean chance(float percentage) {										/*Chance boolean*/
 	return random(0, 100)<percentage;
@@ -89,6 +97,10 @@ boolean chance(float percentage) {										/*Chance boolean*/
 void keyPressed() {
 	try {
 		mapP.setDirection(keyCode, 1);
+	} catch (Exception e) {
+		println("exeption Player Movement: "+e);
+	}
+	try {
 		switch (key) {
 			case '1':
 			case '2':
@@ -100,17 +112,18 @@ void keyPressed() {
 			case 'g':
 			case 't':
 			case 'i':
+			case 'c':
 			mode = key;
 			break;	
 		}
 	} catch (Exception e) {
-		println("exeption: "+e);
+		println("exeption Mode: "+e);
 	}
 }
 void keyReleased() {
 	try {
 		mapP.setDirection(keyCode, 0);
 	} catch (Exception e) {
-		println("exeption: "+e);
+		println("exeption Player Movement: "+e);
 	}
 }
