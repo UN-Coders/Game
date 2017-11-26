@@ -6,6 +6,8 @@ Menu menu;																/*Declaration of the Menu object*/
 ArrayList<TerrainDungeon> mapTD = new ArrayList<TerrainDungeon>();		/*Declaration of the TerrainDungeon object*/
 PFont font = new PFont();												/*Text font*/
 char mode = 'i';														/*Game status mode*/
+
+int w;
 void setup() {
 	frameRate(60);														/*Set max fps*/
 	menu = new Menu();													/*Initialization of the Menu object*/
@@ -14,6 +16,8 @@ void setup() {
 	noStroke();
 	// fullScreen(P3D);
 	size(1200, 800, P3D);
+	surface.setResizable(true);
+	w = width;
 }
 void draw() {
 	background(0);														/*Set a black background*/
@@ -26,7 +30,7 @@ void draw() {
 			game();														/*Game main map mode*/
 			break;
 			case 't' :
-			mapC.eye = 500;
+			mapC.eye = 1000;
 			mapP.x = mapTD.get(0).pX;
 			mapP.z = mapTD.get(0).pY;
 			dungeon();													/*Game dungeon mode **test state*/
@@ -50,6 +54,8 @@ void newGame(){
 	mapP = new Player();												/*Initialization of the Player object*/
 	mapC = new Camera();												/*Initialization of the Map object*/
 	text = new Text();													/*Initialization of the Text object*/
+	String[] dungeonF = {"some","text"};								/*For the creation of Dungeon folder **Important***/
+	saveStrings("data/Save/Dungeon/dungeon.txt",dungeonF);
 }
 void game(){
 	/**/																/*Paint terrain, player and camera*/
@@ -81,22 +87,30 @@ boolean chance(float percentage) {										/*Chance boolean*/
 }
 /**/																	/*Player Movement Directions*/
 void keyPressed() {
-	mapP.setDirection(keyCode, 1);
-	switch (key) {
-		case '1':
-		case '2':
-		case '3':
-		case '4':
-		mapP.init(key);
-		break;
-		case 'm':
-		case 'g':
-		case 't':
-		case 'i':
-		mode = key;
-		break;	
+	try {
+		mapP.setDirection(keyCode, 1);
+		switch (key) {
+			case '1':
+			case '2':
+			case '3':
+			case '4':
+			mapP.init(key);
+			break;
+			case 'm':
+			case 'g':
+			case 't':
+			case 'i':
+			mode = key;
+			break;	
+		}
+	} catch (Exception e) {
+		println("exeption: "+e);
 	}
 }
 void keyReleased() {
-	mapP.setDirection(keyCode, 0);
+	try {
+		mapP.setDirection(keyCode, 0);
+	} catch (Exception e) {
+		println("exeption: "+e);
+	}
 }

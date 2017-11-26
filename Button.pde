@@ -1,7 +1,8 @@
 class Button{
-	int x,y,x2,y2;
+	float x,y,x2,y2;
 	String text;
 	color nCol, sCol;
+	int tWidth,tHeight;
 	void paint(){
 		pushMatrix();
 		rectMode(CORNERS);
@@ -27,19 +28,24 @@ class Button{
 		else
 			return false;
 	}
-	void init(String text,int x,int y,int x2,int y2, color col){
+	void resize(){
+		init(text,(x-10)/tWidth,(y-10)/tHeight,(x2+10)/tWidth,(y2+10)/tHeight,nCol);
+	}
+	void init(String text,float x,float y,float x2,float y2, color col){
 		this.text = text;
-		this.x = x+10;
-		this.y = y+10;
-		this.x2 = x2-10;
-		this.y2 = y2-10;
+		this.x = (width*x)+10;
+		this.y = (height*y)+10;
+		this.x2 = (width*x2)-10;
+		this.y2 = (height*y2)-10;
 		this.nCol = col;
 		this.sCol = color(red(col), green(col)-50, blue(col),alpha(col));
+		this.tWidth = width;
+		this.tHeight = height;
 	}
-	Button (String text,int x,int y,int x2,int y2, color col) {
+	Button (String text,float x,float y,float x2,float y2, color col) {
 		init(text, x, y, x2, y2, col);
 	}
-	Button (String text,int x,int y,int x2,int y2) {
+	Button (String text,float x,float y,float x2,float y2) {
 		init(text, x, y, x2, y2, color(150, 100, 150, 200));
 	}
 }
