@@ -54,6 +54,7 @@ class Player {
 			String[] filenames = file.list();
 			if(filenames.length < 9){
 				println("A new Dungeon!!!!!");
+				mode = 'b';
 				mapTD.add(new TerrainDungeon(""+filenames.length));
 			}
 			m.pY += 1;													/*<needs to improve>*/

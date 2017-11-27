@@ -6,7 +6,11 @@ Menu menu;																/*Declaration of the Menu object*/
 ArrayList<TerrainDungeon> mapTD = new ArrayList<TerrainDungeon>();		/*Declaration of the TerrainDungeon object*/
 PFont font = new PFont();												/*Text font*/
 char mode = 'i';														/*Game status mode*/
-
+BattlePlayer player;
+Battles battle;
+Intro intro;
+Table phyHab,magHab,potions,weapons,armor;
+PImage back;
 void setup() {
 	frameRate(60);														/*Set max fps*/
 	menu = new Menu();													/*Initialization of the Menu object*/
@@ -14,9 +18,20 @@ void setup() {
 	textFont(font, 48);
 	noStroke();
 	// fullScreen(P3D);
+	phyHab=loadTable("World/Habilities/phyHabilitiesList.csv","header");
+	magHab=loadTable("World/Habilities/magHabilitiesList.csv","header");
+	potions=loadTable("World/Items/potions.csv","header");
+	weapons=loadTable("World/Items/weapons.csv","header");
+	armor=loadTable("World/Items/armor.csv","header");
+	player=new BattlePlayer("1");
+	battle=new Battles(0,"1");
+	intro = new Intro();
+	back = loadImage("World/Art/battleBackground(4).png");
+	back.resize(width,height);
 	size(1200, 800, P3D);
 	surface.setResizable(true);											/*Let change window size*/
 }
+String cAnimation = " ";
 void draw() {
 	background(0);														/*Set a black background*/
 	try {
@@ -41,8 +56,27 @@ void draw() {
 			break;
 			case 'c':
 			credits();													/*Credit **Need Design Enhacement***/
+			break;
+			case 'p' :
+			intro.paint();	
+			break;		
+			case 'b' :
+			battle.turn();
+			battle.paintBattle();
 			break;	
 		}	
+		switch (cAnimation) {
+			case "Stab" :
+			case "Barrier" :
+			case "Guard" :
+			case "Charge" :
+			case "Slice" :
+			case "Healing" :
+			case "FireBall" :
+			case "Mesmerize" :
+			player.atkAnimations(cAnimation);
+			break;
+		}
 	} catch (Exception e) {
 		println("General exeption: "+e);
 	}
@@ -94,6 +128,7 @@ boolean chance(float percentage) {										/*Chance boolean*/
 	return random(0, 100)<percentage;
 }
 /**/																	/*Player Movement Directions*/
+String typing = "New Player";
 void keyPressed() {
 	try {
 		mapP.setDirection(keyCode, 1);
@@ -115,6 +150,12 @@ void keyPressed() {
 			case 'c':
 			mode = key;
 			break;	
+		}
+		if (key == BACKSPACE) {
+			typing = "";
+		} else if (key == '\n'){
+		} else {
+			typing = typing + key;
 		}
 	} catch (Exception e) {
 		println("exeption Mode: "+e);

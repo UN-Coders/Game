@@ -1,0 +1,9 @@
+name,type,baseAtk,baseDef,resourcesExpense,animation
+Stab,physical,10,0,5,2
+Guard,physical,0;10,5,1
+Charge,physical,7,0,3,1
+Slice,physical,15,0,8,2
+Barrier,magical,0,10,5,3
+Healing,magical,0,15,8,4
+FireBall,magical,15,0,8,5
+Mesmerize,magical,7,5,8,6

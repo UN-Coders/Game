@@ -8,7 +8,7 @@ class Terrain {
 	void init() {														/*Initialization of the object*/
 		cMap = createImage(1000,1000,RGB);								/*map unique image*/
 		for (int i = 0; i<8; i++){
-			s[i] = loadImage("Terrain/Suelo"+(i+1)+".jpg");				/*Load the terrain textures*/
+			s[i] = loadImage("Terrain/Floor ("+(i+1)+").jpg");				/*Load the terrain textures*/
 			s[i].resize(cMap.width/mapSize,cMap.width/mapSize);
 		}
 		/**/															/*<-- Noise Generator in HashMap and minimap -->*/
