@@ -42,7 +42,9 @@ class Battles {
 		rect(width*4.1/15, height*2/3, width*7.7/15, height*29/30, 10);//for actions
 		rect(width*7.8/15, height*2/3, width*49/50, height*29/30, 10);//for habilities
 		textAlign(CENTER);
-		text(player.rowConfig.getString("name"),width*1.2/50, (height*2/3)+width/150, (width*4/15)-width/150, height*89/120);
+		textSize(100);
+		textAlign(CENTER,LEFT);
+		text(player.rowConfig.getString("name"),width/40, height/40, width/2.5,height/2);
 		for (Button o : buttons) {
 			o.paint();
 		}
