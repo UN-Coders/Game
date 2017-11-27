@@ -1,7 +1,8 @@
 class Button{
-	int x,y,x2,y2;
+	float x, y, x2, y2;
 	String text;
-	color nCol, sCol;
+	color nCol, sCol, nColText, sColText;
+	int tWidth,tHeight;
 	void paint(){
 		pushMatrix();
 		rectMode(CORNERS);
@@ -10,36 +11,55 @@ class Button{
 		else
 			fill(nCol);
 		rect(x, y, x2, y2, 10);
-		fill(10, 10, 10);
-		textAlign(CENTER);
+		textAlign(CENTER , CENTER);
 		textSize(y2-y);
-		text(text, (x+x2)/2, y2+((y-y2)/5));
+		if(selected())
+			fill(sColText);
+		else
+			fill(nColText);
+		text(text, x, y, x2, y2);
 		popMatrix();
 	}
 	boolean selected(){
 		if(mouseX>x && mouseY>y && mouseX<x2 && mouseY<y2)
 			return true;
-		else return false;
-	}
-	boolean clicked(){
-		if(selected() && mousePressed)
-			return true;
 		else
 			return false;
 	}
-	void init(String text,int x,int y,int x2,int y2, color col){
+	int oseg = 0;
+	boolean clicked(){
+		if(!selected())
+			oseg = 0;
+		if(selected() && mousePressed && oseg == 0){
+			oseg = 1;
+			return true;
+		}
+		else
+			return false;
+	}
+	void resize(){
+		init(text,(x-10)/tWidth,(y-10)/tHeight,(x2+10)/tWidth,(y2+10)/tHeight,nCol,nColText);
+	}
+	void init(String text,float x,float y,float x2,float y2, color col, color colText){
 		this.text = text;
-		this.x = x+10;
-		this.y = y+10;
-		this.x2 = x2-10;
-		this.y2 = y2-10;
+		this.x = (width*x)+10;
+		this.y = (height*y)+10;
+		this.x2 = (width*x2)-10;
+		this.y2 = (height*y2)-10;
 		this.nCol = col;
-		this.sCol = color(red(col), green(col)-50, blue(col),alpha(col));
+		this.sCol = color(red(col)+100, green(col)+50, blue(col)+30, alpha(col));
+		this.nColText = colText;
+		this.sColText = color(red(colText)+150, green(colText)+80, blue(colText),alpha(colText));
+		this.tWidth = width;
+		this.tHeight = height;
 	}
-	Button (String text,int x,int y,int x2,int y2, color col) {
-		init(text, x, y, x2, y2, col);
+	Button (String text,float x,float y,float x2,float y2, color col, color colText) {
+		init(text, x, y, x2, y2, col, colText);
 	}
-	Button (String text,int x,int y,int x2,int y2) {
-		init(text, x, y, x2, y2, color(150, 100, 150, 200));
+	Button (String text,float x,float y,float x2,float y2, color col) {
+		init(text, x, y, x2, y2, col, color(0));
+	}
+	Button (String text,float x,float y,float x2,float y2) {
+		init(text, x, y, x2, y2, color(150, 100, 150, 200), color(10));
 	}
 }
