@@ -32,47 +32,67 @@ class Player {
 			}
 		}
 	}
-
+	int animationSpeed = 200, animationCount = 0;
 	void atkAnimations(String atk){
 		TableRow ani= habilities.findRow(atk,"name");
 		pushMatrix();
 		imageMode(CORNER);
+		delay(animationSpeed);
 		switch (ani.getInt("animation")) {
 			case 1 :
-			for(int i=14; i<20; i++){
-				delay(500);
-				image(spBattle.get(i), width*2/3, height/7, (width*1.3/4)+width*2/3, height*1.5/3);	
-				redraw();
+			image(spBattle.get((int)animationCount+14), width/2,0,300,300);	
+			animationCount++;
+			if(animationCount+14 >= 19){
+				animationCount = 0;
+				cAnimation = " ";
 			}
 			break;
 			case 2 :
-			for(int i=21; i<26; i++){
-				image(spBattle.get(i), width*2/3, height/7, (width*1.3/4)+width*2/3, height*1.5/3);
+			image(spBattle.get((int)animationCount+21), width/2,0,300,300);	
+			animationCount++;
+			if(animationCount+21 == 26){
+				animationCount = 0;
+				cAnimation = " ";
 			}
 			break;
 			case 3 :
-			for(int i=28; i<34; i++){
-				image(spBattle.get(0),0,height/7,width*1.3/4,height*1.5/3);
+			image(spBattle.get((int)animationCount+28), width/2,0,300,300);	
+			animationCount++;
+			if(animationCount+28 >= 34){
+				animationCount = 0;
+				cAnimation = " ";
 			}
-			break;	
+			break;
 			case 4 :
-			for(int i=35; i<41; i++){
-				image(spBattle.get(0),0,height/7,width*1.3/4,height*1.5/3);
+			image(spBattle.get((int)animationCount+35), width/2,0,300,300);	
+			animationCount++;
+			if(animationCount+35 >= 41){
+				animationCount = 0;
+				cAnimation = " ";
 			}
-			break;	
+			break;
 			case 5 :
-			for(int i=42; i<47; i++){
-				image(spBattle.get(0),0,height/7,width*1.3/4,height*1.5/3);
+			image(spBattle.get((int)animationCount+42), 0,height/7,width*1.3/4,height*1.5/3);	
+			animationCount++;
+			if(animationCount+42 >= 48){
+				animationCount = 0;
+				cAnimation = " ";
 			}
-			break;	
+			break;
 			case 6 :
-			for(int i=49; i<54; i++){
-				image(spBattle.get(0),0,height/7,width*1.3/4,height*1.5/3);
+			image(spBattle.get((int)animationCount+49), width/2,0,300,300);	
+			animationCount++;
+			if(animationCount+49 >= 54){
+				animationCount = 0;
+				cAnimation = " ";
 			}
-			break;	
+			break;
 			case 7 :
-			for (int i = 56; i < 61; ++i) {
-				image(spBattle.get(0),0,height/7,width*1.3/4,height*1.5/3);
+			image(spBattle.get((int)animationCount+56), width/2,0,300,300);	
+			animationCount++;
+			if(animationCount+56 >= 61){
+				animationCount = 0;
+				cAnimation = " ";
 			}
 			break;	
 		}
