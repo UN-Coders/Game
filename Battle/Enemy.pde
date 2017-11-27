@@ -2,7 +2,7 @@ class Enemy extends Mob{
 	ArrayList<String> loot=new ArrayList<String>();
 
 	void init(){
-		sprite = loadImage("Sprites/Enemies/"+type+".png");
+		sprite = loadImage("Sprites/Enemies/"+type+"/"+type+"Enemy.png");
 		sp.clear();
 		if(type=="physical"){
 			for (int i = 0; i<594; i+=66) {
@@ -20,10 +20,6 @@ class Enemy extends Mob{
 		}
 	}
 	
-	@Override
-	int selecAtk(){
-		return int(random(1, 4));
-	}
 	Enemy(String type, String saveSlot){
 		super(type,saveSlot);
 	}

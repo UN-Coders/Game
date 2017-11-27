@@ -19,7 +19,6 @@ class Player {
 		rowStats=stats.getRow(0);
 		rowInventory=inventory.getRow(0);
 		rowConfig=config.getRow(0);
-		rowHabilities=habilities.getRow(0);
 		this.init();
 	}
 	
@@ -40,7 +39,7 @@ class Player {
 		delay(animationSpeed);
 		switch (ani.getInt("animation")) {
 			case 1 :
-			image(spBattle.get((int)animationCount+14), width/2,0,300,300);	
+			image(spBattle.get((int)animationCount+14), 0,height/7,width*1.3/4,height*1.5/3);	
 			animationCount++;
 			if(animationCount+14 >= 19){
 				animationCount = 0;
@@ -48,7 +47,7 @@ class Player {
 			}
 			break;
 			case 2 :
-			image(spBattle.get((int)animationCount+21), width/2,0,300,300);	
+			image(spBattle.get((int)animationCount+21), 0,height/7,width*1.3/4,height*1.5/3);	
 			animationCount++;
 			if(animationCount+21 == 26){
 				animationCount = 0;
@@ -56,7 +55,7 @@ class Player {
 			}
 			break;
 			case 3 :
-			image(spBattle.get((int)animationCount+28), width/2,0,300,300);	
+			image(spBattle.get((int)animationCount+28), 0,height/7,width*1.3/4,height*1.5/3);	
 			animationCount++;
 			if(animationCount+28 >= 34){
 				animationCount = 0;
@@ -64,7 +63,7 @@ class Player {
 			}
 			break;
 			case 4 :
-			image(spBattle.get((int)animationCount+35), width/2,0,300,300);	
+			image(spBattle.get((int)animationCount+35),0,height/7,width*1.3/4,height*1.5/3);	
 			animationCount++;
 			if(animationCount+35 >= 41){
 				animationCount = 0;
@@ -80,7 +79,7 @@ class Player {
 			}
 			break;
 			case 6 :
-			image(spBattle.get((int)animationCount+49), width/2,0,300,300);	
+			image(spBattle.get((int)animationCount+49), 0,height/7,width*1.3/4,height*1.5/3);	
 			animationCount++;
 			if(animationCount+49 >= 54){
 				animationCount = 0;
@@ -88,7 +87,7 @@ class Player {
 			}
 			break;
 			case 7 :
-			image(spBattle.get((int)animationCount+56), width/2,0,300,300);	
+			image(spBattle.get((int)animationCount+56), 0,height/7,width*1.3/4,height*1.5/3);	
 			animationCount++;
 			if(animationCount+56 >= 61){
 				animationCount = 0;

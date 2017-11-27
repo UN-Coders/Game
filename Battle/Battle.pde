@@ -1,5 +1,4 @@
 Player player;
-//Mob mob;
 Battles battle;
 PFont font = new PFont();
 Intro intro;
@@ -14,7 +13,6 @@ void setup() {
 	potions=loadTable("World/Items/potions.csv","header");
 	weapons=loadTable("World/Items/weapons.csv","header");
 	armor=loadTable("World/Items/armor.csv","header");
-	//mob = int(random(1))==0 ? new Mob("pshysical","1") : new Mob("Magical","1");
 	player=new Player("1");
 	battle=new Battles(0,"1");
 	intro = new Intro();
@@ -35,14 +33,6 @@ void draw() {
 		battle.paintBattle();
 		break;	
 	}
-	if(battle.buttons.get(6).clicked())
-		cAnimation = "Stab";
-	if(battle.buttons.get(7).clicked())
-		cAnimation = "Barrier";
-	if(battle.buttons.get(8).clicked())
-		cAnimation = "Charge";
-	if(battle.buttons.get(9).clicked())
-		cAnimation = "FireBall";
 
 	switch (cAnimation) {
 		case "Stab" :

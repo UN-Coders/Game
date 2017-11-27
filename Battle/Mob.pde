@@ -1,4 +1,5 @@
-abstract class Mob {
+class Mob {
+	boolean sel;
 	//stats
 	Table pStats;
 	TableRow row;
@@ -35,12 +36,14 @@ abstract class Mob {
 			stats.put("lvl",int(random(row.getInt("lvl")-5,row.getInt("lvl")+5)));
 		stats.put("life",100*stats.get("lvl"));
 	}	
-
-	abstract int selecAtk();
+	int selecAtk(){
+		return int(random(3));
+	}
 
 	void atkAnimation(int nAtk, float x, float y){
 		pushMatrix();
 		imageMode(CORNER);
+		cAnimation=habilities.get(nAtk);
 		if(type=="physical"){
 			TableRow ani = phyHab.findRow(habilities.get(nAtk),"name");
 			if(ani.getInt("animation")==1){
@@ -116,8 +119,20 @@ abstract class Mob {
 	void paintInBattle(float x,float y){
 		pushMatrix();
 		imageMode(CORNER);
+		rectMode(CORNER);
+		if(sel) rect(x, y, width*1.3/4, height/120);
 		image(sp.get(0),x,y,width*1.3/4,height*1.5/3);//x=0,y=height/7
 		popMatrix();
+	}
+	boolean selected(int x, int y){
+		if(mouseX>x && mouseY>y && mouseX<x+(width*1.3/4) && mouseY<y+(height*1.5/3))
+			return sel=true;
+		else
+			return sel=false;
+	}
+	boolean alive(){
+		if(stats.get("life")<0) return false;
+		else return true;
 	}
 
 	int atk(int nAtk){
