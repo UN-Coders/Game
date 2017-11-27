@@ -46,6 +46,8 @@ class Player {
 		tx += x<m.mapSize/2 && x>-m.mapSize/2?east  - west:0;
 		tz += z<m.mapSize/2 && z>-m.mapSize/2?south - north:0;
 		/**/															/*Rewrite position values just if is permitted*/
+		if((tx != x || tz != z) && chance(2.5))
+			dialogue = "Battle";
 		if (m.map.getFloat((tx+m.mapSize/2)+"-"+(tz+m.mapSize/2))!=1) {
 			m.pX = x = tx;
 			m.pY = z = tz;
@@ -63,6 +65,7 @@ class Player {
 			}
 		}
 	}
+	int chest = 0;
 	void move(TerrainDungeon m) {
 		int tx = x, tz = z;												/*Temporal values of position*/
 		tx += x<m.mapSize/2 && x>-m.mapSize/2?east  - west:0;
@@ -70,6 +73,8 @@ class Player {
 		/**/															/*Rewrite position values just if is permitted*/
 		if((tx != x || tz != z) && chance(2.5))
 			dialogue = "Battle";
+		else if((tx != x || tz != z) && chance(0.25) && chest++ < 3)
+			dialogue = "Chest";
 		if (!m.map.isNull((tx+m.mapSize/2)+"-"+(tz+m.mapSize/2))) {
 			m.pX = x = tx; 
 			m.pY = z = tz;

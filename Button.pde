@@ -23,7 +23,8 @@ class Button{
 	boolean selected(){
 		if(mouseX>x && mouseY>y && mouseX<x2 && mouseY<y2)
 			return true;
-		else return false;
+		else
+			return false;
 	}
 	int oseg = 0;
 	boolean clicked(){
@@ -32,7 +33,8 @@ class Button{
 		if(selected() && mousePressed && oseg == 0){
 			oseg = 1;
 			return true;
-		}else
+		}
+		else
 			return false;
 	}
 	void resize(){
@@ -47,7 +49,7 @@ class Button{
 		this.nCol = col;
 		this.sCol = color(red(col)+100, green(col)+50, blue(col)+30, alpha(col));
 		this.nColText = colText;
-		this.sColText = color(red(col)+150, green(col)+80, blue(col),alpha(col));
+		this.sColText = color(red(colText)+150, green(colText)+80, blue(colText),alpha(colText));
 		this.tWidth = width;
 		this.tHeight = height;
 	}
@@ -55,7 +57,7 @@ class Button{
 		init(text, x, y, x2, y2, col, colText);
 	}
 	Button (String text,float x,float y,float x2,float y2, color col) {
-		init(text, x, y, x2, y2, col, color(10));
+		init(text, x, y, x2, y2, col, color(0));
 	}
 	Button (String text,float x,float y,float x2,float y2) {
 		init(text, x, y, x2, y2, color(150, 100, 150, 200), color(10));

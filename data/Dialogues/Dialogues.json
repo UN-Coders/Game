@@ -72,5 +72,10 @@
 	[
 		"Aqui viene una batalla",
 	],
-	"BattleTempos":[100],
+	"BattleTempos":[50],
+	"Chest":
+	[
+		"Un cofre!!",
+	],
+	"ChestTempos":[50],
 }
