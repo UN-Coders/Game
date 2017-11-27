@@ -2,9 +2,7 @@ TODO task:
 	Branches:
 		master:
 		Testing:
-			☐	 Menu. @critical @started(17-11-24)
 			☐	 Sprite character selection. @low @started(17-11-23)
-			☐	 Each dungeon in map have its own terrain with @low
 
 		☐	@davilab
 		Battle:
@@ -23,6 +21,8 @@ TODO task:
 		testingDungeon:
 ＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿
 Archive:
+	✔	 Each dungeon in map have its own terrain with @low @started(17-11-25) @done (17-11-27) @lasted(2 days) @project(TODO task / Branches / Testing)
+	✔	 Menu. @critical @started(17-11-24) @done (17-11-27) @lasted(3 days) @project(TODO task / Branches / Testing)
 	✔	 Menu image @critical @started(17-11-24) @done (17-11-24) @lasted(less than day) @project(TODO task / Branches / master / Desing)
 	✔	 Dungeon Implementation @started(17-11-23) @high @done (17-11-24) @lasted(1 day) @project(TODO task / Branches / master / testingDungeon)
 	✔	 Dungeon entrance in main map. @high @started(17-11-24) @done (17-11-24) @lasted(less than day) @project(TODO task / Branches / master / Testing)
