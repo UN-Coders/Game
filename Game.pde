@@ -148,6 +148,8 @@ void keyPressed() {
 			case 't':
 			case 'i':
 			case 'c':
+      case 'b':
+      case 'p':
 			mode = key;
 			break;	
 		}
