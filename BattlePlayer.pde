@@ -1,4 +1,4 @@
-class Player {
+class BattlePlayer {
 	boolean inMap=true;
 	//stats
 	Table stats,habilities,inventory,config;
@@ -11,7 +11,7 @@ class Player {
 	int spriteCount = 0;
 	int x,y,z,pS=100;   /*Position, pS = player spriteSize*/
 	
-	Player(String saveSlot){
+	BattlePlayer(String saveSlot){
 		config=loadTable("Saves/"+saveSlot+"/Player/playerConfig.csv", "header");
 		stats= loadTable("Saves/"+saveSlot+"/Player/playerStats.csv", "header");
 		inventory= loadTable("Saves/"+saveSlot+"/Player/playerInventory.csv", "header");
