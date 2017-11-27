@@ -22,7 +22,7 @@ class Battles {
 		buttons.add(new Button("MANA: "+row.getString("mana"),0.017,0.77,0.27,0.87,color(0,0,0,1),color(160,150,0,255)));
 		buttons.add(new Button("SP: "+row.getString("stamina"),0.017,0.87,0.27,0.97,color(0,0,0,1),color(160,150,0,255)));
 		/*init buttons for actions*/
-		buttons.add(new Button("ATACK",0.27,0.67,0.517,0.77,color(0,0,0,1),color(160,150,0,255)));
+		buttons.add(new Button("ATTACK",0.27,0.67,0.517,0.77,color(0,0,0,1),color(160,150,0,255)));
 		buttons.add(new Button("DEFENSE",0.27,0.77,0.517,0.87,color(0,0,0,1),color(160,150,0,255)));
 		buttons.add(new Button("INVENTORY",0.27,0.87,0.517,0.97,color(0,0,0,1),color(160,150,0,255)));
 		/*init buttons for habilities*/

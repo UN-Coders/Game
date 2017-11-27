@@ -33,6 +33,7 @@ class Mob {
 			stats.put("lvl",int(random(1,row.getInt("lvl")+5)));
 		else
 			stats.put("lvl",int(random(row.getInt("lvl")-5,row.getInt("lvl")+5)));
+		stats.put("life",100*stats.get("lvl"));
 	}	
 	void paintInBattle(float x,float y){
 		pushMatrix();

@@ -37,26 +37,12 @@ class Player {
 		image(spBattle.get(0),0,height/7,width*1.3/4,height*1.5/3);
 		popMatrix();
 	}
-	// int atk(){
-	// 	a
-	// }
-	
-	
-	///Do not uncomment until the final merge with the master branch
-	
-	//void paintInMap() {
-	//  println(mapT.hMap.get("X"+(x+mapT.mapSize/2)+"Y"+(z+mapT.mapSize/2)));
-	//  spriteCount++;
-	//  if (spriteCount == 8)spriteCount=0;
-	//  pushMatrix();
-	//  imageMode(CENTER);
-	//  rotateX(PI/2);
-	//  translate(x*pS, z*pS);
-	//  if      (south - north == -1) image(sp.get( 0+spriteCount), 0, 0, pS, pS);
-	//  else if (east  - west  == -1) image(sp.get( 9+spriteCount), 0, 0, pS, pS);
-	//  else if (east  - west  ==  1) image(sp.get(27+spriteCount), 0, 0, pS, pS);
-	//  else if (south - north ==  1) image(sp.get(18+spriteCount), 0, 0, pS, pS);
-	//  else image(sp.get(18), 0, 0, pS, pS);
-	//  popMatrix();
-	//}
+	int atk(String atk){
+		TableRow hab= habilities.findRow(atk,"name");
+		TableRow weap= weapons.findRow(rowInventory.getString("weapon"),"name");
+		if(hab.getString("type")=="physical")
+			return int(rowStats.getInt("phyAtk")*random(10)/10*rowStats.getInt("lvl"))+hab.getInt("baseAtk")+weap.getInt("baseAtk");
+		else
+			return int(rowStats.getInt("magAtk")*random(10)/10*rowStats.getInt("lvl"))+hab.getInt("baseAtk")+weap.getInt("baseAtk");
+	}
 }
