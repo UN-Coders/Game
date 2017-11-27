@@ -46,8 +46,10 @@ class Player {
 		tx += x<m.mapSize/2 && x>-m.mapSize/2?east  - west:0;
 		tz += z<m.mapSize/2 && z>-m.mapSize/2?south - north:0;
 		/**/															/*Rewrite position values just if is permitted*/
-		if((tx != x || tz != z) && chance(2.5))
+		if((tx != x || tz != z) && chance(2.5)){
 			dialogue = "Battle";
+			mode = 'b';
+		}
 		if (m.map.getFloat((tx+m.mapSize/2)+"-"+(tz+m.mapSize/2))!=1) {
 			m.pX = x = tx;
 			m.pY = z = tz;
@@ -71,8 +73,10 @@ class Player {
 		tx += x<m.mapSize/2 && x>-m.mapSize/2?east  - west:0;
 		tz += z<m.mapSize/2 && z>-m.mapSize/2?south - north:0;
 		/**/															/*Rewrite position values just if is permitted*/
-		if((tx != x || tz != z) && chance(2.5))
+		if((tx != x || tz != z) && chance(2.5)){
 			dialogue = "Battle";
+			mode = 'b';
+		}
 		else if((tx != x || tz != z) && chance(0.25) && chest++ < 3)
 			dialogue = "Chest";
 		if (!m.map.isNull((tx+m.mapSize/2)+"-"+(tz+m.mapSize/2))) {

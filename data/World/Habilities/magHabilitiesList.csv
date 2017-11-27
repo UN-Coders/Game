@@ -1,0 +1,6 @@
+name,baseAtk,baseDef,resourcesExpense,animation
+Barrier,0,10,5,3
+Healing,0,15,8,4
+FireBall,15,0,8,5
+Mesmerize,7,5,8,6
+Thunder,10,0,6,7
