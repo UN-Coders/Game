@@ -17,19 +17,19 @@ class Battles {
 		this.init();
 	}
 	void init(){
-		//init buttons for stats
-		// buttons.add(new Button("LIFE: "+row.getString("life"),1/50,0.5,4/15,0.7,color(0,0,0,255),color(255,255,0)));
-		// buttons.add(new Button("MANA: "+row.getString("mana"),1/50,0.7,4/15,0.9,color(0,0,0,255),color(255,255,0)));
-		// buttons.add(new Button("STAMINA: "+row.getString("stamina"),1/50,2/3,4/15,29/30,color(0,0,0,255),color(255,255,0)));
-		//init buttons for actions
-		// buttons.add(new Button("ATACK",(1.2/50)*2, 89/120+width/150, ((4/15)-width/150)*2, 98/120,color(0,0,0,255),color(255,255,0)));
-		// buttons.add(new Button("DEFENSE",(1.2/50)*2, 98/120+width/150, ((4/15)-width/150)*2, 107/120,color(0,0,0,255),color(255,255,0)));
-		// buttons.add(new Button("INVENTORY",(1.2/50)*2,107/120+width/150, ((4/15)-width/150)*2, 116/120,color(0,0,0,255),color(255,255,0)));
-		// //init buttons for habilities
-		// buttons.add(new Button("<ACTION 1>",(1.2/50)*3, 89/120+width/150, ((4/15)-width/150)*3, 98/120,color(0,0,0,255),color(255,255,0)));
-		// buttons.add(new Button("<ACTION 2>",(1.2/50)*4, (89/120+width/150)+(98/120)*1.2, ((4/15)-width/150)*4, 116/120,color(0,0,0,255),color(255,255,0)));
-		// buttons.add(new Button("<ACTION 3>",(1.2/50)*3, 89/120+width/150, ((4/15)-width/150)*3, 98/120,color(0,0,0,255),color(255,255,0)));
-		// buttons.add(new Button("<ACTION 4>",(1.2/50)*4, (89/120+width/150)+(98/120)*1.2, ((4/15)-width/150)*4,  116/120,color(0,0,0,255),color(255,255,0)));
+		/*init buttons for stats*/
+		buttons.add(new Button("LIFE: "+row.getString("life"),0.017,0.67,0.27,0.77,color(0,0,0,1),color(160,150,0,255)));
+		buttons.add(new Button("MANA: "+row.getString("mana"),0.017,0.77,0.27,0.87,color(0,0,0,1),color(160,150,0,255)));
+		buttons.add(new Button("SP: "+row.getString("stamina"),0.017,0.87,0.27,0.97,color(0,0,0,1),color(160,150,0,255)));
+		/*init buttons for actions*/
+		buttons.add(new Button("ATACK",0.27,0.67,0.517,0.77,color(0,0,0,1),color(160,150,0,255)));
+		buttons.add(new Button("DEFENSE",0.27,0.77,0.517,0.87,color(0,0,0,1),color(160,150,0,255)));
+		buttons.add(new Button("INVENTORY",0.27,0.87,0.517,0.97,color(0,0,0,1),color(160,150,0,255)));
+		/*init buttons for habilities*/
+		buttons.add(new Button("<ACTION 1>",0.517,0.72,0.751,0.82,color(0,0,0,1),color(160,150,0,255)));
+		buttons.add(new Button("<ACTION 2>",0.517,0.82,0.751,0.92,color(0,0,0,1),color(160,150,0,255)));
+		buttons.add(new Button("<ACTION 3>",0.751,0.72,0.985,0.82,color(0,0,0,1),color(160,150,0,255)));
+		buttons.add(new Button("<ACTION 4>",0.751,0.82,0.985,0.92,color(0,0,0,1),color(160,150,0,255)));
 	}
 	void paintBattle(){
 		pushMatrix();

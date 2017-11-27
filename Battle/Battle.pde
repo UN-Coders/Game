@@ -1,10 +1,13 @@
 Player player;
 Mob mob;
 Battles battle;
+PFont font = new PFont();
 
 Table phyHab,magHab;
 
 void setup() {
+	font = loadFont("font/ARESSENCE-48.vlw");							/*Set font*/
+	textFont(font, 48);
 	phyHab=loadTable("World/Habilities/phyHabilitiesList.csv","header");
 	magHab=loadTable("World/Habilities/magHabilitiesList.csv","header");
 	mob = int(random(1))==0 ? new Mob("pshysical","1") : new Mob("Magical","1");
