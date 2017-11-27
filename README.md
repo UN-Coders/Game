@@ -1,4 +1,4 @@
-# RPG-Game _(Titulo por decidir)_
+# RPG-Game _(Zahary´s Grimoire)_
 
 Nombre|GitHub User
 :---|:---:

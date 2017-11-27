@@ -7,7 +7,7 @@ class Player {
 	ArrayList<PImage> sp = new ArrayList<PImage>();						/*Sprite div of `PImage sprite` in an arrayList*/
 	/**/																/*Initialization of the object, arg "k" = (key of keyListener)*/
 	void init(int k) {
-		sprite = loadImage("Sprites/Sprite "+(k-(int)'0')+".png");
+		sprite = loadImage("Sprites/Sprite 2.png");
 		sp.clear();
 		while (mapT.map.getFloat((x+mapT.mapSize/2)+"-"+(z+mapT.mapSize/2)) != 0) {
 			x = (int)random(15-mapT.mapSize/2, mapT.mapSize/2-15);
