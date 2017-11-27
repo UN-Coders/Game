@@ -7,17 +7,70 @@
 		"Fourth Line , more than 10 seconds = 1000 tics",
 	],
 	"MainTempos": [300,400,200,1000],
-	"Dungeon": 
+	"Dungeon1": 
 	[
 		"Huele mal!",
 		"Quizas no deberia estar aca, pero no debo temer",
 		"tendre que seguir mi camino para llegar a mi objetivo"
 	],
-	"DungeonTempos": [50,200,300],
+	"Dungeon1Tempos": [50,200,300],
+
 	"Dungeon2":
 	[
-		"Mmmmmm..., otra ruina, tal vez encuentre algo de valor dentro",
+		"Mmmmmm..., una ruina, tal vez encuentre algo de valor dentro",
 		"debo entrar para descubrirlo"
 	],
 	"Dungeon2Tempos": [400,200],
+	"Dungeon3":
+	[
+		"Puaj! a que huele",
+		"no quiero entrar para descubrirlo",
+		"peeero... debo hacerlo"
+	],
+	"Dungeon3Tempos": [300,200,200],
+	"Dungeon4":
+	[
+		"Demonios!, que es este lugar",
+		"esta todo oscuro",
+		"casi no logro ver"
+	],
+	"Dungeon4Tempos": [300,100,100],
+	"Dungeon5":
+	[
+		"Perfecto ... un calabozo",
+		"mejor tener cuidado dentro"
+	],
+	"Dungeon5Tempos": [300,200],
+	"Dungeon6":
+	[
+		"Este tipo de lugares hacen que hasta los mas valientes teman",
+		"y yo sere el unico que lograra salir vivo de uno"
+	],
+	"Dungeon6Tempos": [300,300],
+	"Dungeon7":
+	[
+		"Ufff, espero no encontrarme a un orco",
+		"son tan feos como mi ex",
+		"nunca sabre por que sali con ella"
+	],
+	"Dungeon7Tempos": [300,200,200],
+	"Dungeon8":
+	[
+		"...",
+		"...",
+		"Un poco de silencio para un lugar tenebroso",
+		"Perfecto!"
+	],
+	"Dungeon8Tempos": [120,110,300,100],
+	"Dungeon9":
+	[
+		"Calabozo a la vista!",
+		"es tiempo de entrar"
+	],
+	"Dungeon9Tempos": [200,200],
+	"Battle":
+	[
+		"Aqui viene una batalla",
+	],
+	"BattleTempos":[200],
 }

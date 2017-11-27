@@ -25,10 +25,14 @@ class Button{
 			return true;
 		else return false;
 	}
+	int oseg = 0;
 	boolean clicked(){
-		if(selected() && mousePressed)
+		if(!selected())
+			oseg = 0;
+		if(selected() && mousePressed && oseg == 0){
+			oseg = 1;
 			return true;
-		else
+		}else
 			return false;
 	}
 	void resize(){

@@ -3,43 +3,47 @@ Player mapP;															/*Declaration of the Player object*/
 Camera mapC;															/*Declaration of the Map object*/
 Debug text;																/*Declaration of the Debug object*/
 Menu menu;																/*Declaration of the Menu object*/
-ArrayList<TerrainDungeon> mapTD = new ArrayList<TerrainDungeon>();		/*Declaration of the TerrainDungeon object*/
+TerrainDungeon[] mapTD = new TerrainDungeon[9];							/*Declaration of the TerrainDungeon object*/
+int numDungeon;
 Dialogue talk;
 String dialogue;
 PFont font = new PFont();												/*Text font*/
 char mode = 'i';														/*Game status mode*/
+Button mapButton;
+File file;
+String[] filenames;
 
 void setup() {
 	frameRate(60);														/*Set max fps*/
+	// fullScreen(P3D);
+	size(1200, 800, P3D);
 	menu = new Menu();													/*Initialization of the Menu object*/
 	font = loadFont("font/ARESSENCE-48.vlw");							/*Set font*/
 	textFont(font, 48);
 	talk = new Dialogue();
 	dialogue = ".";
+	mapButton = new Button("Map",0.90,0.90,1,1,color(100,100,100),color(100,0,0));
+	file = new File(sketchPath()+"/data/Save/Dungeon/");
+	filenames = file.list();
 	noStroke();
-	// fullScreen(P3D);
-	size(1200, 800, P3D);
 	surface.setResizable(true);											/*Let change window size*/
 }
 void draw() {
 	background(0);														/*Set a black background*/
 	try {
-		talk.paint(dialogue);
 		switch (mode) {
 			case 'g' :
-			mapC.eye = 2000;
-			mapP.x = mapT.pX;
-			mapP.z = mapT.pY;
 			game();														/*Game main map mode*/
 			break;
 			case 't' :
-			mapC.eye = 1000;
-			mapP.x = mapTD.get(0).pX;
-			mapP.z = mapTD.get(0).pY;
 			dungeon();													/*Game dungeon mode*/
 			break;
 			case 'm':
 			mapT.paintMinimap();										/*Minimap Visualization*/
+			talk.paint(dialogue);
+			if(mapButton.clicked())
+				mode = 'g';
+			mapButton.paint();
 			break;
 			case 'i':
 			menu.paint();												/*Game Menu*/
@@ -60,8 +64,16 @@ void newGame(){
 	String[] dungeonF = {"some","text"};								/*For the creation of Dungeon folder **Important***/
 	saveStrings("data/Save/Dungeon/dungeon.txt",dungeonF);
 }
+float speedPlayer = 2, timer = 0;
 void game(){
 	/**/																/*Paint terrain, player and camera*/
+	talk.paint(dialogue);
+	mapC.eye = 1500;
+	mapP.x = mapT.pX;
+	mapP.z = mapT.pY;
+	if(mapButton.clicked())
+		mode = 'm';
+	mapButton.paint();
 	pushMatrix();
 	mapC.paint();
 	mapT.paint();
@@ -69,19 +81,31 @@ void game(){
 	popMatrix();
 	text.paint();
 	/**/																/*Camera and player Movement*/
-	mapP.move(mapT);
-	mapC.move(mapT);
+	if(timer > 4){
+		mapP.move(mapT);
+		mapC.move(mapT);
+		timer = 0;
+	}
+	timer += speedPlayer;
 }
 void dungeon(){															/*Paint dungeonTerrain*/
+	background(81, 51, 81);
+	talk.paint(dialogue);
+	mapC.eye = 1000;
+	mapP.x = mapTD[numDungeon].pX;
+	mapP.z = mapTD[numDungeon].pY;
 	pushMatrix();
 	mapC.paint();
-	mapTD.get(0).paint();
+	mapTD[numDungeon].paint();
 	mapP.paint();
 	popMatrix();
 	text.paint();
-
-	mapP.move(mapTD.get(0));
-	mapC.move(mapTD.get(0));
+	if(timer > 6){
+		mapP.move(mapTD[numDungeon]);
+		mapC.move(mapTD[numDungeon]);
+		timer = 0;
+	}
+	timer += speedPlayer;
 }
 void credits(){
 	fill(255,250,0);

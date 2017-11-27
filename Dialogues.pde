@@ -21,7 +21,7 @@ class Dialogue{
 					textAlign(LEFT, TOP);
 					textSize(48);
 					fill(10);
-					text(text.getString(n), x, y+width/40, x2, y2);
+					text(text.getString(n), x+width/40, y+height/40, x2, y2);
 					popMatrix();
 					t += dialogueSpeed*skip;
 				} else {

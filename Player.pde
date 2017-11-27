@@ -5,18 +5,20 @@ class Player {
 	float spriteCount = 0, spriteSpeed = 0.2;							/*Sprite frame visualization control value*/
 	PImage sprite = new PImage();										/*Sprite complete Image*/
 	ArrayList<PImage> sp = new ArrayList<PImage>();						/*Sprite div of `PImage sprite` in an arrayList*/
-	void init(int k) {													/*Initialization of the object, arg "k" = (key of keyListener)*/
-	sprite = loadImage("Sprites/Sprite "+(k-(int)'0')+".png");
-	sp.clear();
-	for (int j = 512; j<767; j+=64)										/*Sprite movement section*/
-		for (int i = 0; i<575; i+=64)
-			sp.add(sprite.get(i, j, 64, 64));
-		while (mapT.map.getFloat((x+mapT.mapSize/2)+"-"+(z+mapT.mapSize/2))==1) {
+	/**/																/*Initialization of the object, arg "k" = (key of keyListener)*/
+	void init(int k) {
+		sprite = loadImage("Sprites/Sprite "+(k-(int)'0')+".png");
+		sp.clear();
+		while (mapT.map.getFloat((x+mapT.mapSize/2)+"-"+(z+mapT.mapSize/2)) != 0) {
 			x = (int)random(15-mapT.mapSize/2, mapT.mapSize/2-15);
 			z = (int)random(15-mapT.mapSize/2, mapT.mapSize/2-15);
 		}
 		mapT.pX = this.x;
 		mapT.pY = this.z;
+		for (int j = 512; j<767; j+=64) {								/*Sprite movement section*/
+			for (int i = 0; i<575; i+=64)
+				sp.add(sprite.get(i, j, 64, 64));
+		}
 	}
 	void paint() {
 		spriteCount = spriteCount>=8? 0: spriteCount+spriteSpeed;
@@ -48,16 +50,17 @@ class Player {
 			m.pX = x = tx;
 			m.pY = z = tz;
 		}
-		if (m.map.getFloat((tx+m.mapSize/2)+"-"+(tz+m.mapSize/2))==10) {
-			
-			File file = new File(sketchPath()+"/data/Save/Dungeon/");
-			String[] filenames = file.list();
-			if(filenames.length < 9){
-				dialogue = "Dungeon";
-				mapTD.add(new TerrainDungeon(""+filenames.length));
+		for (int i = 0; i < 9; i++) {
+			if (m.map.getFloat((tx+m.mapSize/2)+"-"+(tz+m.mapSize/2))==10*(i+1)) {
+				dialogue = "Dungeon"+(i+1);
+				mapTD[i+1] = new TerrainDungeon(""+(i+1));
+				filenames = file.list();
+				if(filenames.length > 1){
+					mode = 't';
+					m.pY += 1;													/*<needs to improve>*/
+					numDungeon = i+1;
+				}
 			}
-			m.pY += 1;													/*<needs to improve>*/
-			mode = 't';
 		}
 	}
 	void move(TerrainDungeon m) {
@@ -66,6 +69,8 @@ class Player {
 		tz += z<m.mapSize/2 && z>-m.mapSize/2?south - north:0;
 		/**/															/*Rewrite position values just if is permitted*/
 		if (!m.map.isNull((tx+m.mapSize/2)+"-"+(tz+m.mapSize/2))) {
+			if(chance(1))
+				dialogue = "Battle";
 			m.pX = x = tx; 
 			m.pY = z = tz;
 		}
