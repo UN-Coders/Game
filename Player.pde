@@ -68,9 +68,9 @@ class Player {
 		tx += x<m.mapSize/2 && x>-m.mapSize/2?east  - west:0;
 		tz += z<m.mapSize/2 && z>-m.mapSize/2?south - north:0;
 		/**/															/*Rewrite position values just if is permitted*/
+		if((tx != x || tz != z) && chance(2.5))
+			dialogue = "Battle";
 		if (!m.map.isNull((tx+m.mapSize/2)+"-"+(tz+m.mapSize/2))) {
-			if(chance(1))
-				dialogue = "Battle";
 			m.pX = x = tx; 
 			m.pY = z = tz;
 		}
