@@ -12,8 +12,8 @@ class Ally extends Mob{
 	}
 
 	@Override
-	void selecAtk(){
-		println("sjfb");
+	int selecAtk(){
+		return 0;
 	}
 	Ally(String type, String saveSlot){
 		super(type,saveSlot);

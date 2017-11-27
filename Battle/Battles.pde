@@ -51,4 +51,13 @@ class Battles {
 		popMatrix();
 		player.effectAnimations(" ");
 	}
+	void turn(){
+		if(buttons.get(3).clicked())
+			for(int i=0; i<4; i++) buttons.get(i+6).text=player.habilities.getString(i,0);
+		else if(buttons.get(4).clicked())
+			for(int i=0; i<4; i++) 	buttons.get(i+6).text=player.habilities.getString(i+4,0);
+		else if(buttons.get(5).clicked())
+			for(int i=0; i<4; i++) buttons.get(i+6).text=player.rowInventory.getString(i+3);
+
+	}
 }

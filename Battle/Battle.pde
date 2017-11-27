@@ -30,6 +30,7 @@ void draw() {
 		intro.paint();
 		break;
 		case "Battle" :
+		battle.turn();
 		battle.paintBattle();
 		break;	
 	}
