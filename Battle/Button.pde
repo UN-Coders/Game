@@ -23,7 +23,8 @@ class Button{
 	boolean selected(){
 		if(mouseX>x && mouseY>y && mouseX<x2 && mouseY<y2)
 			return true;
-		else return false;
+		else
+			return false;
 	}
 	int oseg = 0;
 	boolean clicked(){
@@ -32,8 +33,9 @@ class Button{
 		if(selected() && mousePressed && oseg == 0){
 			oseg = 1;
 			return true;
-		}else
-		return false;
+		}
+		else
+			return false;
 	}
 	void resize(){
 		init(text,(x-10)/tWidth,(y-10)/tHeight,(x2+10)/tWidth,(y2+10)/tHeight,nCol,nColText);
