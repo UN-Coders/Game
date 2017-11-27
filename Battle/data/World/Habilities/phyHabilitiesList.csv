@@ -2,3 +2,4 @@ name,baseAtk,baseDef,resourcesExpense,animation
 Stab,10,0,5,2
 Guard,0;10,5,1
 Charge,7,0,3,1
+Slice,15,0,8,2

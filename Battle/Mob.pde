@@ -1,4 +1,4 @@
-class Mob {
+abstract class Mob {
 	//stats
 	Table pStats;
 	TableRow row;
@@ -35,6 +35,9 @@ class Mob {
 			stats.put("lvl",int(random(row.getInt("lvl")-5,row.getInt("lvl")+5)));
 		stats.put("life",100*stats.get("lvl"));
 	}	
+
+	abstract void selecAtk();
+	
 	void paintInBattle(float x,float y){
 		pushMatrix();
 		imageMode(CORNER);

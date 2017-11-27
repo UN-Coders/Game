@@ -49,6 +49,6 @@ class Battles {
 			o.paint();
 		}
 		popMatrix();
-		player.paintInBattle();
+		player.effectAnimations(" ");
 	}
 }

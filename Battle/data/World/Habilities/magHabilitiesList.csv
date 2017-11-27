@@ -1,4 +1,6 @@
 name,baseAtk,baseDef,resourcesExpense,animation
-Stab,10,0,5,2
-Guard,0;10,5,1
-Charge,7,0,3,1
+Barrier,0,10,5,3
+Healing,0,15,8,4
+FireBall,15,0,8,5
+Mesmerize,7,5,8,6
+Thunder,10,0,6,7

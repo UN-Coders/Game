@@ -10,6 +10,11 @@ class Ally extends Mob{
 		rowInventory=inventory.getRow(0);
 		rowStats=stats.getRow(0);
 	}
+
+	@Override
+	void selecAtk(){
+		println("sjfb");
+	}
 	Ally(String type, String saveSlot){
 		super(type,saveSlot);
 	}

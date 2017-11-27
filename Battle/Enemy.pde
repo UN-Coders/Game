@@ -61,6 +61,10 @@ class Enemy extends Mob{
 		}
 		popMatrix();
 	}
+	@Override
+	void selecAtk(){
+		println("sjfb");
+	}
 	Enemy(String type, String saveSlot){
 		super(type,saveSlot);
 	}
