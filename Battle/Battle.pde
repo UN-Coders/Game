@@ -23,6 +23,7 @@ void setup() {
 	size(1200,800);
 	//fullScreen();
 }
+String cAnimation = " ";
 void draw() {
 	background(back);
 	switch (mode) {
@@ -33,8 +34,27 @@ void draw() {
 		battle.paintBattle();
 		break;	
 	}
-	if(battle.buttons.get(6).clicked())player.atkAnimations("Stab");
-	if(battle.buttons.get(7).clicked())player.effectAnimations("lPos");
+	if(battle.buttons.get(6).clicked())
+		cAnimation = "Stab";
+	if(battle.buttons.get(7).clicked())
+		cAnimation = "Barrier";
+	if(battle.buttons.get(8).clicked())
+		cAnimation = "Charge";
+	if(battle.buttons.get(9).clicked())
+		cAnimation = "FireBall";
+
+	switch (cAnimation) {
+		case "Stab" :
+		case "Barrier" :
+		case "Guard" :
+		case "Charge" :
+		case "Slice" :
+		case "Healing" :
+		case "FireBall" :
+		case "Mesmerize" :
+		player.atkAnimations(cAnimation);
+		break;
+	}
 }
 String typing = "New Player";
 void keyPressed() {
